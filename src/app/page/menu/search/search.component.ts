@@ -13,8 +13,8 @@ export class SearchComponent {
   duid: string = '61376bbcc3298933'
 
   appointments: any[] = [];
-  pid: string = '';
-  pname: string = '';
+  pid: string = ' ';
+  pname: string = ' ';
 
   showNoData: boolean = false;
   searchText: string = '';
@@ -34,7 +34,9 @@ export class SearchComponent {
         this.appointments = response.Appoints.filter((appointment: any) => appointment.DUID === this.duid);
         this.showNoData = this.appointments.length === 0;
 
-        this.searchText = this.pid ? `以下是${this.pid}的訂車紀錄查詢結果，共 ${this.appointments.length} 筆資料` : `以下是 ${this.pname} 的訂車紀錄查詢結果，共 ${this.appointments.length} 筆資料`;
+        this.searchText = this.pid ?
+        `以下是${this.pid}的訂車紀錄查詢結果，共 ${this.appointments.length} 筆資料` :
+        `以下是 ${this.pname} 的訂車紀錄查詢結果，共 ${this.appointments.length} 筆資料`;
       },
       error => {
         console.error('請求錯誤：', error);

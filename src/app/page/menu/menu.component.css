@@ -1,0 +1,56 @@
+.centered-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.centered-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  padding: 10px 0;
+  width: 100%;
+  height: 80px;
+  font-weight: bold;
+
+}
+
+.booking{
+  background-color: bisque;
+  width: 90%;
+  font-size: 30px;
+  border-radius: 10px;
+  margin: 10px 0;
+  letter-spacing: 2px;
+}
+
+.search{
+  background-color: bisque;
+  width: 90%;
+  font-size: 30px;
+  border-radius: 10px;
+  margin: 10px 0;
+  letter-spacing: 2px;
+}
+
+.download{
+  background-color: bisque;
+  width: 90%;
+  font-size: 30px;
+  border-radius: 10px;
+  margin: 10px 0;
+  letter-spacing: 2px;
+}
+
+.quota{
+  background-color: bisque;
+  width: 90%;
+  font-size: 30px;
+  border-radius: 10px;
+  margin: 10px 0;
+  letter-spacing: 2px;
+}

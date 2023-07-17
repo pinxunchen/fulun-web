@@ -1,0 +1,45 @@
+.centered-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.centered-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  padding: 10px 0;
+  width: 100%;
+  height: 80px;
+  font-weight: bold;
+
+}
+
+.taipei{
+  background-color: #FFE8DB;
+  width: 80%;
+  font-size: 30px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.newTaipei{
+  background-color: bisque;
+  width: 80%;
+  font-size: 30px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.taoyuan{
+  background-color: bisque;
+  width: 80%;
+  font-size: 30px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+

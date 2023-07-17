@@ -1,0 +1,65 @@
+<header>
+  <div class="navbar2">
+
+    <div class="nav_btn">
+      <nav  data-bs-theme="dark">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="booking">預約訂車</button>
+      <button mat-menu-item [matMenuTriggerFor]="search">趟次查詢</button>
+      <button mat-menu-item [matMenuTriggerFor]="download">文件下載</button>
+      <button mat-menu-item [matMenuTriggerFor]="quota">額度查詢</button>
+    </mat-menu>
+
+    <mat-menu #booking="matMenu">
+      <button mat-menu-item routerLink="menu/booking/taipei">台北長照</button>
+      <button mat-menu-item routerLink="menu/booking/newTaipei">新北長照</button>
+      <button mat-menu-item routerLink="menu/booking/taoyuan">桃園長照</button>
+    </mat-menu>
+
+    <mat-menu #search="matMenu">
+      <button mat-menu-item>我的趟次</button>
+      <button mat-menu-item>我的個案</button>
+      <button mat-menu-item>長照資格查詢</button>
+
+    </mat-menu>
+
+    <mat-menu #download="matMenu">
+      <button mat-menu-item routerLink="menu/download">福倫爬梯機文件</button>
+      <button mat-menu-item>台北</button>
+      <button mat-menu-item>新北</button>
+      <button mat-menu-item>桃園</button>
+      <button mat-menu-item>基隆</button>
+    </mat-menu>
+
+    <mat-menu #quota="matMenu">
+      <button mat-menu-item>餘額查詢</button>
+      <button mat-menu-item routerLink="menu/quota/quota-count">補收試算</button>
+    </mat-menu>
+
+
+      </nav>
+
+    </div>
+
+    <div class="text">
+      <span ><a href="menu" class="nav_text">福倫小幫手</a></span>
+  </div>
+
+ <div class="notify">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+  </svg>
+ </div>
+
+
+
+
+  </div>
+
+
+</header>

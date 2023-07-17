@@ -1,1 +1,33 @@
-<p>search works!</p>
+<h1>我的個案 訂車查詢</h1>
+<div>
+  <label for="pidInput">個案身分證：</label>
+  <input type="text" id="pidInput" [(ngModel)]="pid"> <br>
+
+  <label for="pnameInput">個案姓名：</label>
+  <input type="text" id="pnameInput" [(ngModel)]="pname"><br>
+
+  <input type="hidden" id="duidInput" [(ngModel)]="duid">
+
+  <button class="btn btn-dark" (click)="sendDataToAPI()">查詢</button>
+  <button class="btn btn-danger" (click)="clearInputs()">清除文字</button>
+  <button class="btn btn-success" (click)="sortAppointments()">按日期排序</button>
+
+</div>
+
+<p *ngIf="appointments.length > 0">{{ searchText }}</p>
+
+<div *ngIf="appointments.length > 0">
+  <div *ngFor="let appointment of appointments">
+    <div class="card" style="width: 18rem;">
+      <p>預約日期: {{ appointment.Date }}</p>
+      <p>去程時間: {{ appointment.RTime}}</p>
+      <p>回程時間: {{ appointment.BTime}}</p>
+      <p>上車地點: {{ appointment.PUAddress}}</p>
+      <p>下車地點: {{ appointment.DPAddress}}</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showNoData">
+  <p>查無資料，請重新確認輸入資料是否正確</p>
+</div>

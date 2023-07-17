@@ -11,8 +11,9 @@
     <mat-menu #menu="matMenu">
       <button mat-menu-item [matMenuTriggerFor]="booking">預約訂車</button>
       <button mat-menu-item [matMenuTriggerFor]="search">趟次管理</button>
-      <button mat-menu-item [matMenuTriggerFor]="download">文件下載</button>
       <button mat-menu-item [matMenuTriggerFor]="quota">長照查詢</button>
+      <button mat-menu-item [matMenuTriggerFor]="download">文件下載</button>
+
     </mat-menu>
 
     <mat-menu #booking="matMenu">
@@ -22,7 +23,7 @@
     </mat-menu>
 
     <mat-menu #search="matMenu">
-      <button mat-menu-item>趟次查詢</button>
+      <button mat-menu-item routerLink="menu/search">趟次查詢</button>
       <button mat-menu-item>行事曆</button>
 
     </mat-menu>

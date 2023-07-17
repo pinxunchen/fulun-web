@@ -1,6 +1,7 @@
-import { FormService } from './../../../../form.service';
 import { Component } from '@angular/core';
-import { FormBuilder , FormGroup , Validators } from '@angular/forms';
+
+import { FormService } from './../../../../form.service';
+import { FormBuilder  , Validators } from '@angular/forms';
 
 
 
@@ -18,7 +19,7 @@ export class TaipeiComponent {
       PassengerId: ['', [Validators.required, Validators.minLength(10)]],
       Date: ['', [Validators.required]],
       RTime: ['', [Validators.required]],
-      BTime: '',
+      BTime: '無回程',
       Area: '台北',
       DUID: '61376bbcc3298933',
       PUAddress: ['', [Validators.required]],
@@ -37,6 +38,10 @@ export class TaipeiComponent {
         .subscribe(
           response => {
             console.log('請求成功：', response);
+
+            const message = `表單成功提交！\n個案姓名 : ${formData.PassengerName}\n日期 : ${formData.Date}\n去程時間 : ${formData.RTime}\n回程時間 : ${formData.BTime}\n出發地點 : ${formData.PUAddress}\n目的地點 : ${formData.DPAddress}`;
+            alert(message);
+            this.form.reset();
           },
           error => {
             console.error('請求錯誤：', error);

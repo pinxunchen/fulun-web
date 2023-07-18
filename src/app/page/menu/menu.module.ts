@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { QuotaSearchComponent } from './quota/quota-search/quota-search.component';
 import { QuotaCountComponent } from './quota/quota-count/quota-count.component';
 import { FormsModule } from '@angular/forms';
+import { QualificationsComponent } from './quota/qualifications/qualifications.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     NewTaipeiComponent,
     TaoyuanComponent,
     QuotaSearchComponent,
-    QuotaCountComponent
+    QuotaCountComponent,
+    QualificationsComponent
   ],
   imports: [
     CommonModule,

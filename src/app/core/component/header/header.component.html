@@ -10,7 +10,7 @@
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item [matMenuTriggerFor]="booking">預約訂車</button>
-      <button mat-menu-item [matMenuTriggerFor]="search">趟次管理</button>
+      <button mat-menu-item routerLink="menu/search">趟次管理</button>
       <button mat-menu-item [matMenuTriggerFor]="quota">長照查詢</button>
       <button mat-menu-item [matMenuTriggerFor]="download">文件下載</button>
 
@@ -22,11 +22,6 @@
       <button mat-menu-item routerLink="menu/booking/taoyuan">桃園長照</button>
     </mat-menu>
 
-    <mat-menu #search="matMenu">
-      <button mat-menu-item routerLink="menu/search">趟次查詢</button>
-      <button mat-menu-item>行事曆</button>
-
-    </mat-menu>
 
     <mat-menu #download="matMenu">
       <button mat-menu-item routerLink="menu/download">福倫爬梯機文件</button>
@@ -37,8 +32,8 @@
     </mat-menu>
 
     <mat-menu #quota="matMenu">
-      <button mat-menu-item>長照資格</button>
-      <button mat-menu-item>爬梯機餘額</button>
+      <button mat-menu-item>新北長照資格</button>
+      <button mat-menu-item>爬梯機相關</button>
       <button mat-menu-item routerLink="menu/quota/quota-count">補收試算</button>
     </mat-menu>
 

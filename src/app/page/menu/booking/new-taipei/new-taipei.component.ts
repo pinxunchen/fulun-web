@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { FormService } from './../../../../form.service';
 import { FormBuilder  , Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new-taipei',
@@ -9,16 +10,22 @@ import { FormBuilder  , Validators } from '@angular/forms';
   styleUrls: ['./new-taipei.component.css']
 })
 export class NewTaipeiComponent {
+  passengerName: string | null = null;
+  passengerId: string | null = null;
+  puAddress: string | null = null;
+  dpAddress: string | null = null;
+  telephone: string | null = null;
+
   form: any;
 
-  constructor(private fb: FormBuilder , private formService: FormService) {
+  constructor(private fb: FormBuilder , private formService: FormService,private route: ActivatedRoute) {
     this.form = this.fb.group({
       PassengerName: ['', [Validators.required]],
       PassengerId: ['', [Validators.required, Validators.minLength(10)]],
       Date: ['', [Validators.required]],
       RTime: ['', [Validators.required]],
       BTime: '無回程',
-      Area: '台北',
+      Area: '新北',
       DUID: '61376bbcc3298933',
       PUAddress: ['', [Validators.required]],
       DPAddress: ['', [Validators.required]],
@@ -50,6 +57,14 @@ export class NewTaipeiComponent {
     }
   }
 
-
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.passengerName = params['passengerName'] || null;
+      this.passengerId = params['passengerId'] || null;
+      this.puAddress = params['puAddress'] || null;
+      this.dpAddress = params['dpAddress'] || null;
+      this.telephone = params['telephone'] || null;
+    });
+  }
 
 }

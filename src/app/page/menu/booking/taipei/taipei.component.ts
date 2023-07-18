@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { FormService } from './../../../../form.service';
 import { FormBuilder  , Validators } from '@angular/forms';
-
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,9 +11,15 @@ import { FormBuilder  , Validators } from '@angular/forms';
   styleUrls: ['./taipei.component.css']
 })
 export class TaipeiComponent {
+  passengerName: string | null = null;
+  passengerId: string | null = null;
+  puAddress: string | null = null;
+  dpAddress: string | null = null;
+  telephone: string | null = null;
+
   form: any;
 
-  constructor(private fb: FormBuilder , private formService: FormService) {
+  constructor(private fb: FormBuilder , private formService: FormService,private route: ActivatedRoute) {
     this.form = this.fb.group({
       PassengerName: ['', [Validators.required]],
       PassengerId: ['', [Validators.required, Validators.minLength(10)]],
@@ -52,5 +58,13 @@ export class TaipeiComponent {
     }
   }
 
-
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.passengerName = params['passengerName'] || null;
+      this.passengerId = params['passengerId'] || null;
+      this.puAddress = params['puAddress'] || null;
+      this.dpAddress = params['dpAddress'] || null;
+      this.telephone = params['telephone'] || null;
+    });
+  }
 }

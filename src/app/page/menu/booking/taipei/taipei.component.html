@@ -10,7 +10,7 @@
 
   <div class="form-group">
     <label for="PassengerName">個案姓名： </label>
-    <input type="text" class="form-control" id="PassengerName" formControlName="PassengerName">
+    <input type="text" class="form-control" id="PassengerName" [(ngModel)]="passengerName"  formControlName="PassengerName">
     <div class="text-danger" *ngIf="form.controls.PassengerName.errors && form.controls.PassengerName.touched && form.controls.PassengerName.invalid">
       <div *ngIf="form.controls.PassengerName.errors.required">*個案姓名為必填欄位</div>
     </div>
@@ -18,7 +18,7 @@
 
   <div class="form-group">
     <label for="PassengerId">個案身份證： </label>
-    <input type="text" class="form-control" id="PassengerId" formControlName="PassengerId">
+    <input type="text" class="form-control" id="PassengerId" [(ngModel)]="passengerId" formControlName="PassengerId">
     <div class="text-danger" *ngIf="form.controls.PassengerId.errors && form.controls.PassengerId.touched && form.controls.PassengerId.invalid">
       <div *ngIf="form.controls.PassengerId.errors.required">*身份證為必填欄位</div>
       <div *ngIf="form.controls.PassengerId.errors.minlength">*請輸入正確身分證共十碼</div>
@@ -48,7 +48,7 @@
 
   <div class="form-group">
     <label for="PUAddress">上車地址：  </label>
-    <input type="text" class="form-control" id="PUAddress" formControlName="PUAddress">
+    <input type="text" class="form-control" id="PUAddress" [(ngModel)]="puAddress"  formControlName="PUAddress">
     <div class="text-danger" *ngIf="form.controls.PUAddress.errors && form.controls.PUAddress.touched && form.controls.PUAddress.invalid">
       <div *ngIf="form.controls.PUAddress.errors.required">*上車地址為必填欄位</div>
     </div>
@@ -56,7 +56,7 @@
 
   <div class="form-group">
     <label for="DPAddress">下車地址：  </label>
-    <input type="text" class="form-control" id="DPAddress" formControlName="DPAddress">
+    <input type="text" class="form-control" id="DPAddress" [(ngModel)]="dpAddress" formControlName="DPAddress">
     <div class="text-danger" *ngIf="form.controls.DPAddress.errors && form.controls.DPAddress.touched && form.controls.DPAddress.invalid">
       <div *ngIf="form.controls.DPAddress.errors.required">*下車地址為必填欄位</div>
     </div>
@@ -64,7 +64,7 @@
 
   <div class="form-group">
     <label for="Telephone">聯絡方式： </label>
-    <input type="tel" class="form-control" id="Telephone" formControlName="Telephone" inputmode="numeric" placeholder="格式：0912345678">
+    <input type="tel" class="form-control" id="Telephone" formControlName="Telephone" [(ngModel)]="telephone"  inputmode="numeric" placeholder="格式：0912345678">
     <div class="text-danger" *ngIf="form.controls.Telephone.errors && form.controls.Telephone.touched && form.controls.Telephone.invalid">
       <div *ngIf="form.controls.Telephone.errors.required">*聯絡方式為必填欄位</div>
       <div *ngIf="form.controls.Telephone.errors.minlength">*請輸入正確行動電話</div>

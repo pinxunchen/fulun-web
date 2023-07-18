@@ -18,7 +18,7 @@ const routes: Routes = [
     component: BookingComponent
   },
   {
-    path:'menu/booking/taipei/:DUID',
+    path:'menu/booking/taipei',
     component: TaipeiComponent
   },
   {

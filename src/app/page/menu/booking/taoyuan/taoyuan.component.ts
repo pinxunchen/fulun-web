@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormService } from './../../../../form.service';
 import { FormBuilder  , Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 
@@ -21,7 +22,7 @@ export class TaoyuanComponent implements OnInit {
 
   form: any;
 
-  constructor(private fb: FormBuilder , private formService: FormService ,private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder , private formService: FormService ,private route: ActivatedRoute,private router: Router) {
     this.form = this.fb.group({
       PassengerName: ['', [Validators.required]],
       PassengerId: ['', [Validators.required, Validators.minLength(10)]],
@@ -50,6 +51,10 @@ export class TaoyuanComponent implements OnInit {
             const message = `表單成功提交！\n個案姓名 : ${formData.PassengerName}\n日期 : ${formData.Date}\n去程時間 : ${formData.RTime}\n回程時間 : ${formData.BTime}\n出發地點 : ${formData.PUAddress}\n目的地點 : ${formData.DPAddress}`;
             alert(message);
             this.form.reset();
+
+            // 跳轉回menu
+            //this.router.navigate(['/menu']);
+
           },
           error => {
             console.error('請求錯誤：', error);

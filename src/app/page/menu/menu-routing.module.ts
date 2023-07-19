@@ -9,6 +9,7 @@ import { TaipeiComponent } from './booking/taipei/taipei.component';
 import { NewTaipeiComponent } from './booking/new-taipei/new-taipei.component';
 import { TaoyuanComponent } from './booking/taoyuan/taoyuan.component';
 import { QuotaCountComponent } from './quota/quota-count/quota-count.component';
+import { QualificationsComponent } from './quota/qualifications/qualifications.component';
 
 
 
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path:'menu/quota/quota-count',
     component: QuotaCountComponent
+  },
+  {
+    path:'menu/quota/qualifications',
+    component: QualificationsComponent,
   }
 ];
 

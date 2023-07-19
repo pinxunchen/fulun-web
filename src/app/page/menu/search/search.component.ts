@@ -25,7 +25,9 @@ export class SearchComponent {
 
   constructor(private formService: FormService ,private router: Router) {}
 
+  //發送Post請求
   sendDataToAPI() {
+    this.appointments = [];
     this.isLoading = true;
 
     const data = {
@@ -39,7 +41,6 @@ export class SearchComponent {
         console.log('請求成功：', response);
         this.appointments = response.Appoints.filter((appointment: any) => appointment.DUID === this.duid);
         this.showNoData = this.appointments.length === 0;
-
         this.searchText = this.pid ?
         `以下是身分證： ${this.pid} 的訂車紀錄查詢結果， 共 ${this.appointments.length} 筆資料` :
         `以下是姓名：${this.pname} 的訂車紀錄查詢結果，共 ${this.appointments.length} 筆資料`;
@@ -52,13 +53,17 @@ export class SearchComponent {
     );
   }
 
+
+  //清除
   clearInputs() {
     this.pid = '';
     this.pname = '';
     this.appointments = [];
+    this.showNoData = false;
   }
 
 
+  //日期排列
   sortAppointments() {
     this.appointments.sort((a, b) => {
       const dateA = new Date(a.Date);
@@ -74,6 +79,8 @@ export class SearchComponent {
     this.ascendingOrder = !this.ascendingOrder;
     };
 
+
+    //傳遞APPOINT到地區頁面
     navigateToAreaComponent(appointment: any) {
       const queryParams = {
         passengerName: appointment.PassengerName,
@@ -93,6 +100,7 @@ export class SearchComponent {
     }
 
 
+    //提示
     showPrompt() {
       alert('請輸入個案 "身分證" 或 "姓名" 後點擊查詢，直接點擊查詢可查看您的全部趟次');
     }

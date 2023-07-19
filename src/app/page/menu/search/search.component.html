@@ -4,10 +4,10 @@
   <h1>我的訂車查詢</h1>
 
   <div class="container">
-    <i class="bi bi-question-circle" (click)="showPrompt()"></i>
+    <i class="bi bi-question-circle" style="font-size: 1.3em;" (click)="showPrompt()"></i>
     <div class="input_area">
       <label for="pnameInput">個 案 姓 名 ：</label>
-      <input type="text" id="pnameInput" placeholder="請選填一項" [(ngModel)]="pname">
+      <input type="text" id="pnameInput" placeholder="請選填一項或直接查詢" [(ngModel)]="pname">
       <label for="pidInput" >個案身分證：</label>
       <input type="text" id="pidInput" placeholder="開頭請大寫" [(ngModel)]="pid">
 
@@ -17,7 +17,6 @@
 
     <div class="btn_group">
       <button class="btn btn-dark" (click)="sendDataToAPI()">查詢</button>
-
       <div class="btn2">
         <button class="btn btn-danger" (click)="clearInputs()">清除</button>
         <button class="btn btn-success" (click)="sortAppointments()">日期排序</button>
@@ -43,7 +42,6 @@
           </div>
           <div class="card-separator"></div>
           <div class="card-details">
-            <p>地區 : {{ appointment.Area }}</p>
             <p>個案資料 : {{ appointment.PassengerName }}  |  {{ appointment.PassengerId }} </p>
             <p>預約日期 : {{ appointment.Date }}</p>
             <p>預約時間 : {{ appointment.RTime }} | {{ appointment.BTime }}</p>

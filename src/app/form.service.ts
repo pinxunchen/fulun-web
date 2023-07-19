@@ -11,20 +11,18 @@ export class FormService {
 
   constructor(private http: HttpClient) { }
 
-
-
   //表單提交
   submitForm(formData: FormData): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' ,'Accept': 'application/json; charset=utf-8'});
     const httpOptions = { headers: headers };
 
-    return this.http.post<any>(this.apiUrl+'LTCAppoint', formData, httpOptions);
+    return this.http.post<any>(this.apiUrl + 'LTCAppoint', formData, httpOptions);
   }
 
 
   //提交查詢
   sendData(data: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl+'QueryLTCAppoint', data);
+    return this.http.post<any>(this.apiUrl + 'QueryLTCAppoint', data);
   }
 
 

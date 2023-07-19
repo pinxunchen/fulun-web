@@ -47,6 +47,9 @@ export class NewTaipeiComponent {
             const message = `表單成功提交！\n個案姓名 : ${formData.PassengerName}\n日期 : ${formData.Date}\n去程時間 : ${formData.RTime}\n回程時間 : ${formData.BTime}\n出發地點 : ${formData.PUAddress}\n目的地點 : ${formData.DPAddress}`;
             alert(message);
             this.form.reset();
+
+            // 跳轉回menu
+            //this.router.navigate(['/menu']);
           },
           error => {
             console.error('請求錯誤：', error);

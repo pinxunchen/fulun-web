@@ -1,1 +1,59 @@
-<p>quota-search works!</p>
+<div class="container">
+  <h1>額度查詢</h1>
+  <div class="input-area">
+    <input type="text" id="keyInput" placeholder="請輸入個案姓名或身分證" [(ngModel)]="key">
+    <div class="btn-g">
+      <button class="btn btn-dark" (click)="searchQuota()">查詢</button>
+      <button class="btn btn-danger" (click)="clearInputs()">清除</button>
+    </div>
+
+
+  </div>
+
+  <div *ngIf="showEmptyKeyWarning" class="no-data-text">
+    <p>請填寫身分證或名字後再提交！</p>
+  </div>
+
+  <div class="d-flex justify-content-center" *ngIf="isLoading" >
+    <div class="spinner-border"  role="status">
+      <span class="visually-hidden"></span>
+    </div>
+  </div>
+
+  <div *ngIf="LTCQuotaList.length === 0 && showNoDataMessage" class="no-data-text">
+    <p>查無資料，請重新確認輸入內容！</p>
+  </div>
+
+  <div *ngIf="quotas.length > 0">
+    <div *ngFor="let quota of quotas" class="quota-card">
+      <p>個案姓名： {{ quota.PassengerName }}</p>
+      <p>身分證字號： {{ quota.PassengerId }}</p>
+      <p>編號： {{ quota.Number }}</p>
+      <p>剩餘額度： {{ quota.Quota }}</p>
+
+
+      <div *ngIf="quota.PdfUrl === ''">
+        <p>請款表連結：查無資料</p>
+      </div>
+      <div *ngIf="quota.PdfUrl !== ''" >
+        <p>請款表連結：
+          <a [href]="quota.PdfUrl" target="_blank" *ngIf="quota.PdfUrl !== ''">
+            點我下載
+          </a>
+        </p>
+
+      </div>
+
+      <div *ngIf="quota.UpdateDate === '#REF!'">
+        <p>資料更新日期：查無資料</p>
+      </div>
+      <div *ngIf="quota.UpdateDate !== '#REF!'">
+        <p>資料更新日期：{{ quota.UpdateDate }}</p>
+      </div>
+    </div>
+
+
+
+  </div>
+
+</div>

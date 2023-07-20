@@ -1,34 +1,39 @@
-<div class="inputbox">
-  <input type="number" [(ngModel)]="numberInput" (input)="validateNumber()"  min="0" max="700" placeholder="請輸入餘額 0~700" />
-  <button (click)="clearInputs()"  class="btn btn-dark">清除</button>
+<div class="container">
+  <div class="inputbox">
+    <input type="number" [(ngModel)]="numberInput" (input)="validateNumber()"  min="0" max="700" placeholder="請輸入餘額 0~700" />
+    <button (click)="clearInputs()"  class="btn btn-dark">清除</button>
+  </div>
+
+  <div class="text">
+    請選擇身分別：
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic outlined example">
+    <button type="button" class="btn btn-outline-primary" (click)="selectCategory('一般戶')">一般戶</button>
+    <button type="button" class="btn btn-outline-primary" (click)="selectCategory('中低收入')">中低收入戶</button>
+    <button type="button" class="btn btn-outline-primary" (click)="selectCategory('低收入')">低收入戶</button>
+  </div>
+
+  <div class="text">
+    請選擇樓層：
+  </div>
+
+  <div class="btn-group" role="group" aria-label="Basic outlined example">
+    <button type="button" class="btn btn-outline-primary" (click)="selectFloor('一二樓')">一、二樓</button>
+    <button type="button" class="btn btn-outline-primary" (click)="selectFloor('三樓')">三樓</button>
+    <button type="button" class="btn btn-outline-primary" (click)="selectFloor('四五樓')">四、五樓</button>
+    <button type="button" class="btn btn-outline-primary" (click)="selectFloor('六樓')">六樓</button>
+  </div>
+  <div class="text">
+    應收金額為：
+  </div>
+
+  <div *ngIf="numberInput && selectedCategory && selectedFloor" class="result">
+    <p>{{ calculateAmount() }}  元</p>
+  </div>
 </div>
 
-<div class="text">
-  請選擇身分別：
-</div>
-<div class="btn-group" role="group" aria-label="Basic outlined example">
-  <button type="button" class="btn btn-outline-primary" (click)="selectCategory('一般戶')">一般戶</button>
-  <button type="button" class="btn btn-outline-primary" (click)="selectCategory('中低收入')">中低收入戶</button>
-  <button type="button" class="btn btn-outline-primary" (click)="selectCategory('低收入')">低收入戶</button>
-</div>
 
-<div class="text">
-  請選擇樓層：
-</div>
 
-<div class="btn-group" role="group" aria-label="Basic outlined example">
-  <button type="button" class="btn btn-outline-primary" (click)="selectFloor('一二樓')">一、二樓</button>
-  <button type="button" class="btn btn-outline-primary" (click)="selectFloor('三樓')">三樓</button>
-  <button type="button" class="btn btn-outline-primary" (click)="selectFloor('四五樓')">四、五樓</button>
-  <button type="button" class="btn btn-outline-primary" (click)="selectFloor('六樓')">六樓</button>
-</div>
-<div class="text">
-  應收金額為：
-</div>
-
-<div *ngIf="numberInput && selectedCategory && selectedFloor" class="result">
-  <p>{{ calculateAmount() }}  元</p>
-</div>
 
 
 

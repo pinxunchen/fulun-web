@@ -38,7 +38,7 @@ export class SearchComponent {
 
     this.formService.sendData(data).subscribe(
       response => {
-        console.log('請求成功：', response);
+        //console.log('請求成功：', response);
         this.appointments = response.Appoints.filter((appointment: any) => appointment.DUID === this.duid);
         this.showNoData = this.appointments.length === 0;
         this.searchText = this.pid ?
@@ -47,7 +47,7 @@ export class SearchComponent {
         this.isLoading = false;
       },
       error => {
-        console.error('請求錯誤：', error);
+        //console.error('請求錯誤：', error);
         this.isLoading = false;
       }
     );

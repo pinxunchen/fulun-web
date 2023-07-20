@@ -20,9 +20,15 @@ export class FormService {
   }
 
 
-  //提交查詢
+  //提交查詢交通趟紀錄
   sendData(data: any): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'QueryLTCAppoint', data);
+  }
+
+
+  //查詢長照額度
+  searchQuotaService(data: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'QueryLTCQuota', data);
   }
 
 

@@ -15,7 +15,6 @@ export class FormService {
   submitForm(formData: FormData): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' ,'Accept': 'application/json; charset=utf-8'});
     const httpOptions = { headers: headers };
-
     return this.http.post<any>(this.apiUrl + 'LTCAppoint', formData, httpOptions);
   }
 

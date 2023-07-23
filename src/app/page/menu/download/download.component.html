@@ -1,1 +1,23 @@
-<a href="https://drive.google.com/file/d/13_UMfnUSXdAo7splSo_RoVYOYcTjokXM/view?usp=drive_link" target="_blank" download>福倫簽單</a>
+<div class="title">
+  <h1>文件下載</h1>
+</div>
+
+
+<div class="menu">
+  <ng-container *ngFor="let menu of menus; let last = last" >
+    <div class="menu-item" (click)="toggleMenu(menu.name)">
+
+      <h3>{{ menu.name }}</h3>
+      <hr *ngIf="!last" class="menu-divider">
+
+      <div [ngClass]="{'sub-menu': true, 'open': activeMenu === menu.name}">
+
+        <a *ngFor="let link of menu.links" [href]="link.url" target="_blank">{{ link.label }}</a>
+        <hr *ngIf="!last" class="menu-divider">
+
+      </div>
+    </div>
+
+
+  </ng-container>
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormService } from './../../../../form.service';
-import { FormBuilder  , Validators } from '@angular/forms';
+import { FormBuilder  , Validators} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
@@ -21,6 +21,7 @@ export class TaoyuanComponent implements OnInit {
   telephone: string | null = null;
 
   form: any;
+
 
   constructor(private fb: FormBuilder , private formService: FormService ,private route: ActivatedRoute,private router: Router) {
     this.form = this.fb.group({
@@ -74,5 +75,6 @@ export class TaoyuanComponent implements OnInit {
       this.telephone = params['telephone'] || null;
     });
   }
+
 }
 

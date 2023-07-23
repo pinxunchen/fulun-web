@@ -35,7 +35,7 @@ import { QualificationsComponent } from './quota/qualifications/qualifications.c
     FormsModule
   ],
   exports:[
-    BookingComponent
+    BookingComponent,
   ]
 })
 export class MenuModule { }

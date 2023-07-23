@@ -42,8 +42,9 @@ export class SearchComponent {
         this.appointments = response.Appoints.filter((appointment: any) => appointment.DUID === this.duid);
         this.showNoData = this.appointments.length === 0;
         this.searchText = this.pid ?
-        `以下是身分證： ${this.pid} 的訂車紀錄查詢結果， 共 ${this.appointments.length} 筆資料` :
-        `以下是姓名：${this.pname} 的訂車紀錄查詢結果，共 ${this.appointments.length} 筆資料`;
+        `以下是身分證：${this.pid} 的訂車紀錄查詢結果， 共 ${this.appointments.length} 筆資料` :
+        `以下是您的所有訂車紀錄查詢結果， 共 ${this.appointments.length} 筆資料` ;
+        `以下是姓名：${this.pname} 的訂車紀錄查詢結果，共 ${this.appointments.length} 筆資料` ;
         this.isLoading = false;
       },
       error => {

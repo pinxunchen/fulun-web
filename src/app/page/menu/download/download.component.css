@@ -1,0 +1,61 @@
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  font-weight: bolder;
+  background-color: #FFE4C4;
+  border-radius: 5px;
+  height: 40px;
+  letter-spacing: 2px;
+}
+
+.title{
+  margin-bottom: 20px;
+}
+
+.menu-item {
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+
+.sub-menu {
+  display: none;
+
+}
+
+.sub-menu.open {
+  display: block;
+}
+
+.sub-menu a {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: 	#A52A2A;
+}
+
+h3{
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+
+.menu-divider {
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid #ccc;
+  width: 80%;
+}
+

@@ -29,11 +29,14 @@
       <p>個案姓名： {{ quota.PassengerName }}</p>
       <p>身分證字號： {{ quota.PassengerId }}</p>
       <p>編號： {{ quota.Number }}</p>
+
       <p>剩餘額度： {{ quota.Quota }}</p>
+      <div *ngIf="quota.Quota < 4000" class="text-danger">
+        <h4>額度即將使用完畢，如需轉市款專案或有其他問題，請通知相關人員處理，謝謝！ </h4>
+      </div>
 
 
       <div *ngIf="quota.PdfUrl === ''">
-        <p>請款表連結：查無資料</p>
       </div>
       <div *ngIf="quota.PdfUrl !== ''" >
         <p>請款表連結：
@@ -41,8 +44,8 @@
             點我下載
           </a>
         </p>
-
       </div>
+
 
       <div *ngIf="quota.UpdateDate === '#REF!'">
         <p>資料更新日期：查無資料</p>

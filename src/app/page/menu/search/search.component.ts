@@ -1,7 +1,7 @@
 import { Component   } from '@angular/core';
 
 import { FormService } from 'src/app/form.service';
-import { Router , NavigationExtras } from '@angular/router';
+import { Router , ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -10,20 +10,20 @@ import { Router , NavigationExtras } from '@angular/router';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
-  duid: string = '61376bbcc3298933'
-
+  duid: string = '';
   appointments: any[] = [];
   pid: string = '';
   pname: string = '';
 
   isLoading: boolean = false;
-
   showNoData: boolean = false;
   searchText: string = '';
   ascendingOrder: boolean = false;
 
 
-  constructor(private formService: FormService ,private router: Router) {}
+  constructor(private formService: FormService ,private router: Router,private route: ActivatedRoute) {
+    this.duid = this.route.snapshot.params['duid'] || '';
+  }
 
   //發送Post請求
   sendDataToAPI() {

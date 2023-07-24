@@ -12,6 +12,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: '**',
+    redirectTo: '/menu',
+    pathMatch: 'full'
+  },
+  {
     path: 'menu',
     component: MenuComponent
   },

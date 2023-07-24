@@ -19,11 +19,11 @@ export class TaoyuanComponent implements OnInit {
   puAddress: string | null = null;
   dpAddress: string | null = null;
   telephone: string | null = null;
+  duid: string | null = null;
 
   form: any;
 
-
-  constructor(private fb: FormBuilder , private formService: FormService ,private route: ActivatedRoute,private router: Router) {
+  constructor(private fb: FormBuilder , private formService: FormService,private route: ActivatedRoute) {
     this.form = this.fb.group({
       PassengerName: ['', [Validators.required]],
       PassengerId: ['', [Validators.required, Validators.minLength(10)]],
@@ -31,7 +31,7 @@ export class TaoyuanComponent implements OnInit {
       RTime: ['', [Validators.required]],
       BTime: '無回程',
       Area: '桃園',
-      DUID: '61376bbcc3298933',
+      DUID: [''],
       PUAddress: ['', [Validators.required]],
       DPAddress: ['', [Validators.required]],
       Telephone: ['', [Validators.required, Validators.minLength(10)]],
@@ -43,7 +43,9 @@ export class TaoyuanComponent implements OnInit {
 
   onSubmit(f:any){
     if (f.valid) {
-      const formData = this.form.value;
+      const duidValue = this.form.get('DUID').value;
+
+      const formData = { ...this.form.value, DUID: duidValue };
       this.formService.submitForm(formData)
         .subscribe(
           response => {
@@ -55,7 +57,6 @@ export class TaoyuanComponent implements OnInit {
 
             // 跳轉回menu
             //this.router.navigate(['/menu']);
-
           },
           error => {
             console.error('請求錯誤：', error);
@@ -74,7 +75,14 @@ export class TaoyuanComponent implements OnInit {
       this.dpAddress = params['dpAddress'] || null;
       this.telephone = params['telephone'] || null;
     });
+
+    this.route.params.subscribe(params => {
+      this.duid = params['duid'] || null;
+      //console.log('duid:', this.duid);
+      this.form.patchValue({ DUID: this.duid });
+    });
   }
+
 
 }
 

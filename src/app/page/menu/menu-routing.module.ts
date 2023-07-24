@@ -24,6 +24,14 @@ const routes: Routes = [
     component: TaipeiComponent
   },
   {
+    path:'menu/booking/taipei/:duid',
+    component: TaipeiComponent
+  },
+  {
+    path:'menu/booking/newTaipei/:duid',
+    component: NewTaipeiComponent
+  },
+  {
     path:'menu/booking/newTaipei',
     component: NewTaipeiComponent
   },
@@ -32,7 +40,15 @@ const routes: Routes = [
     component: TaoyuanComponent
   },
   {
+    path:'menu/booking/taoyuan/:duid',
+    component: TaoyuanComponent
+  },
+  {
     path:'menu/search',
+    component: SearchComponent
+  },
+  {
+    path:'menu/search/:duid',
     component: SearchComponent
   },
   {

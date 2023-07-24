@@ -15,6 +15,7 @@ export class NewTaipeiComponent {
   puAddress: string | null = null;
   dpAddress: string | null = null;
   telephone: string | null = null;
+  duid: string | null = null;
 
   form: any;
 
@@ -26,7 +27,7 @@ export class NewTaipeiComponent {
       RTime: ['', [Validators.required]],
       BTime: '無回程',
       Area: '新北',
-      DUID: '61376bbcc3298933',
+      DUID: [''],
       PUAddress: ['', [Validators.required]],
       DPAddress: ['', [Validators.required]],
       Telephone: ['', [Validators.required, Validators.minLength(10)]],
@@ -38,7 +39,9 @@ export class NewTaipeiComponent {
 
   onSubmit(f:any){
     if (f.valid) {
-      const formData = this.form.value;
+      const duidValue = this.form.get('DUID').value;
+
+      const formData = { ...this.form.value, DUID: duidValue };
       this.formService.submitForm(formData)
         .subscribe(
           response => {
@@ -68,6 +71,15 @@ export class NewTaipeiComponent {
       this.dpAddress = params['dpAddress'] || null;
       this.telephone = params['telephone'] || null;
     });
+
+    this.route.params.subscribe(params => {
+      this.duid = params['duid'] || null;
+      //console.log('duid:', this.duid);
+      this.form.patchValue({ DUID: this.duid });
+    });
   }
+
+
+
 
 }

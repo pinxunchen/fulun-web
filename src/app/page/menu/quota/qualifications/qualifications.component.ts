@@ -17,6 +17,7 @@ export class QualificationsComponent {
   LTCCaseList: any[] = [];
   splitTelephones: string[] = [];
 
+
   showEmptyKeyWarning: boolean = false;
   isLoading: boolean = false;
   showNoDataMessage = false;
@@ -48,7 +49,8 @@ export class QualificationsComponent {
         this.showNoDataMessage = this.LTCCaseList.length === 0;
         this.qualifications = response.LTCCaseList;
         this.LTCCaseList = response.LTCCaseList;
-        this.splitTelephones = this.qualifications[0].Telephone.split('\n');
+        this.splitTelephones = this.qualifications[0]?.Telephone ? this.qualifications[0].Telephone.split('\n') : [];
+
 
         //console.log('LTCCaseList:', response);
         //關閉spinner
@@ -66,5 +68,6 @@ export class QualificationsComponent {
       this.key = '';
       this.showNoDataMessage = false;
       this.showEmptyKeyWarning = false;
+      this.isLoading = false;
     }
 }

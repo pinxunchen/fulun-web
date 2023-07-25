@@ -13,44 +13,18 @@
   text-decoration: none;
   color: black;
   padding: 10px 0;
-  width: 100%;
   height: 80px;
   font-weight: bold;
-
 }
 
-.booking{
-  background-color: bisque;
-  width: 90%;
+.booking,.quota,.search,.download{
+  background-color: rgb(252, 231, 208);
+  width: 85%;
   font-size: 30px;
   border-radius: 10px;
   margin: 10px 0;
   letter-spacing: 2px;
 }
 
-.search{
-  background-color: bisque;
-  width: 90%;
-  font-size: 30px;
-  border-radius: 10px;
-  margin: 10px 0;
-  letter-spacing: 2px;
-}
 
-.download{
-  background-color: bisque;
-  width: 90%;
-  font-size: 30px;
-  border-radius: 10px;
-  margin: 10px 0;
-  letter-spacing: 2px;
-}
 
-.quota{
-  background-color: bisque;
-  width: 90%;
-  font-size: 30px;
-  border-radius: 10px;
-  margin: 10px 0;
-  letter-spacing: 2px;
-}

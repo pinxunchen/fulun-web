@@ -31,5 +31,10 @@ export class FormService {
   }
 
 
+  //查詢新北長照資格
+  searchQualificationsService(data: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'QueryLTCCase', data);
+  }
+
 
 }

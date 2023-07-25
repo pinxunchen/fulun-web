@@ -41,12 +41,11 @@ export class TaipeiComponent {
   onSubmit(f:any){
     if (f.valid) {
       const duidValue = this.form.get('DUID').value;
-
       const formData = { ...this.form.value, DUID: duidValue };
       this.formService.submitForm(formData)
         .subscribe(
           response => {
-            console.log('請求成功：', response);
+            //console.log('請求成功：', response);
 
             const message = `表單成功提交！\n個案姓名 : ${formData.PassengerName}\n日期 : ${formData.Date}\n去程時間 : ${formData.RTime}\n回程時間 : ${formData.BTime}\n出發地點 : ${formData.PUAddress}\n目的地點 : ${formData.DPAddress}`;
             alert(message);
@@ -79,7 +78,4 @@ export class TaipeiComponent {
       this.form.patchValue({ DUID: this.duid });
     });
   }
-
-
-
 }

@@ -35,7 +35,6 @@ export class QuotaSearchComponent {
     };
 
     this.isLoading = true;
-
     this.formService.searchQuotaService(requestData)
     .subscribe(
       response => {
@@ -44,7 +43,6 @@ export class QuotaSearchComponent {
 
         //檢查array是否為空
         this.showNoDataMessage = this.LTCQuotaList.length === 0;
-
         this.quotas = response.LTCQuotaList;
         this.LTCQuotaList = response.LTCQuotaList;
 
@@ -57,16 +55,13 @@ export class QuotaSearchComponent {
         this.isLoading = false;
       }
     );
-}
+    }
 
     clearInputs() {
       this.quotas = [];
       this.key = '';
       this.showNoDataMessage = false;
       this.showEmptyKeyWarning = false;
-}
-
-
-
+    }
 }
 

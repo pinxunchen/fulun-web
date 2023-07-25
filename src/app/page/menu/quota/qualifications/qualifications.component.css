@@ -1,0 +1,83 @@
+.quota-card{
+  padding: 8px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: 1.5px solid #4a4e69;
+  background-color: 		#FFFFF0;
+  border-radius: 6px;
+}
+
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  font-weight: bolder;
+  background-color: #FFE4C4;
+  border-radius: 5px;
+  height: 35px;
+  letter-spacing: 2px;
+}
+
+input{
+  padding-left: 8px;
+  height: 36px;
+  font-size: 18x;
+}
+
+label{
+  font-weight: bold;
+}
+
+p,a{
+  font-size: 18px;
+  margin-bottom: 6px;
+  padding: 5px;
+}
+
+a{
+  display: inline-block;
+  height: 20px;
+}
+
+.d-flex{
+  align-items: center;
+  height: 100px;
+}
+
+.input-area{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.btn{
+  margin-right : 5px ;
+}
+
+.no-data-text p{
+  font-size: 20px;
+  color: red;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+
+h4{
+  font-size: 18px;
+  margin-bottom: 6px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.no-data-text a{
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}

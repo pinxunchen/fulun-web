@@ -45,8 +45,7 @@ export class NewTaipeiComponent {
       this.formService.submitForm(formData)
         .subscribe(
           response => {
-            console.log('請求成功：', response);
-
+            //console.log('請求成功：', response);
             const message = `表單成功提交！\n個案姓名 : ${formData.PassengerName}\n日期 : ${formData.Date}\n去程時間 : ${formData.RTime}\n回程時間 : ${formData.BTime}\n出發地點 : ${formData.PUAddress}\n目的地點 : ${formData.DPAddress}`;
             alert(message);
             this.form.reset();
@@ -78,8 +77,4 @@ export class NewTaipeiComponent {
       this.form.patchValue({ DUID: this.duid });
     });
   }
-
-
-
-
 }

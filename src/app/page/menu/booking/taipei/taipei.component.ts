@@ -28,7 +28,7 @@ export class TaipeiComponent {
       RTime: ['', [Validators.required]],
       BTime: '無回程',
       Area: '台北',
-      DUID: [''],
+      DUID: ['', [Validators.required]],
       PUAddress: ['', [Validators.required]],
       DPAddress: ['', [Validators.required]],
       Telephone: ['', [Validators.required, Validators.minLength(10)]],

@@ -31,7 +31,7 @@ export class TaoyuanComponent implements OnInit {
       RTime: ['', [Validators.required]],
       BTime: '無回程',
       Area: '桃園',
-      DUID: [''],
+      DUID: ['', [Validators.required]],
       PUAddress: ['', [Validators.required]],
       DPAddress: ['', [Validators.required]],
       Telephone: ['', [Validators.required, Validators.minLength(10)]],

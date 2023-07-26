@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     let duid = this.route.snapshot.queryParamMap.get('duid');
-    console.log(duid);
+    //console.log(duid);
     if(duid){
       if(duid!.length > 0){
         this.formService.DUID = duid! ;

@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormService } from './../../../../form.service';
 import { FormBuilder  , Validators} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-
 
 
 @Component({
@@ -19,7 +17,7 @@ export class TaoyuanComponent implements OnInit {
   puAddress: string | null = null;
   dpAddress: string | null = null;
   telephone: string | null = null;
-  duid: string | null = null;
+  DUID: string = "";
 
   form: any;
 
@@ -31,7 +29,7 @@ export class TaoyuanComponent implements OnInit {
       RTime: ['', [Validators.required]],
       BTime: '無回程',
       Area: '桃園',
-      DUID: ['', [Validators.required]],
+      DUID: [this.formService.DUID, [Validators.required]],
       PUAddress: ['', [Validators.required]],
       DPAddress: ['', [Validators.required]],
       Telephone: ['', [Validators.required, Validators.minLength(10)]],
@@ -43,17 +41,15 @@ export class TaoyuanComponent implements OnInit {
 
   onSubmit(f:any){
     if (f.valid) {
-      const duidValue = this.form.get('DUID').value;
-      const formData = { ...this.form.value, DUID: duidValue };
+      //const duidValue = this.form.get('DUID').value;
+      const formData = { ...this.form.value, DUID: this.formService.DUID };
       this.formService.submitForm(formData)
         .subscribe(
           response => {
             //console.log('請求成功：', response);
-
             const message = `表單成功提交！\n個案姓名 : ${formData.PassengerName}\n日期 : ${formData.Date}\n去程時間 : ${formData.RTime}\n回程時間 : ${formData.BTime}\n出發地點 : ${formData.PUAddress}\n目的地點 : ${formData.DPAddress}`;
             alert(message);
             this.form.reset();
-
             // 跳轉回menu
             //this.router.navigate(['/menu']);
           },
@@ -63,6 +59,8 @@ export class TaoyuanComponent implements OnInit {
         );
     } else {
      alert('請重新確認表單內容！');
+     const duidValue = this.form.get('DUID').value;
+     ///console.log('DUID:', duidValue);
     }
   }
 
@@ -74,12 +72,6 @@ export class TaoyuanComponent implements OnInit {
       this.dpAddress = params['dpAddress'] || null;
       this.telephone = params['telephone'] || null;
     });
-
-    this.route.params.subscribe(params => {
-      this.duid = params['duid'] || null;
-      //console.log('duid:', this.duid);
-      this.form.patchValue({ DUID: this.duid });
-    });
   }
-}
 
+}

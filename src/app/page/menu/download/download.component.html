@@ -9,12 +9,9 @@
 
       <h3>{{ menu.name }}</h3>
       <hr *ngIf="!last" class="menu-divider">
-
       <div [ngClass]="{'sub-menu': true, 'open': activeMenu === menu.name}">
-
-        <a *ngFor="let link of menu.links" [href]="link.url" target="_blank">{{ link.label }}</a>
+        <a *ngFor="let link of menu.links" [routerLink]="link.url">{{ link.label }}</a>
         <hr *ngIf="!last" class="menu-divider">
-
       </div>
     </div>
   </ng-container>

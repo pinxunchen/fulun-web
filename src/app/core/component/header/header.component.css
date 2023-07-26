@@ -5,7 +5,7 @@
   background-color: black;
   margin-bottom: 15px;
   padding: 0;
-
+  justify-content:space-between;
   height: 40px;
 }
 
@@ -23,8 +23,8 @@
   letter-spacing: 4px;
   text-decoration: none;
   color: white;
-  width: 300px;
   height: 40px;
+  width: 200px;
 }
 
 .notify{
@@ -37,5 +37,9 @@
   justify-content: center;
 }
 
-
+.home{
+  display: flex;
+  font-size: 22px;
+  width: 30px;
+}
 

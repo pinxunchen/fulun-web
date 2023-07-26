@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './new-taipei.component.html',
   styleUrls: ['./new-taipei.component.css']
 })
+
 export class NewTaipeiComponent implements OnInit {
   passengerName: string | null = null;
   passengerId: string | null = null;
@@ -48,20 +49,17 @@ export class NewTaipeiComponent implements OnInit {
             const message = `表單成功提交！\n個案姓名 : ${formData.PassengerName}\n日期 : ${formData.Date}\n去程時間 : ${formData.RTime}\n回程時間 : ${formData.BTime}\n出發地點 : ${formData.PUAddress}\n目的地點 : ${formData.DPAddress}`;
             alert(message);
             this.form.reset();
-
             // 跳轉回menu
             //this.router.navigate(['/menu']);
           },
           error => {
             console.error('請求錯誤：', error);
-
           }
         );
     } else {
      alert('請重新確認表單內容！');
      const duidValue = this.form.get('DUID').value;
-     console.log('DUID:', duidValue); // 確認是否有值被正確設置
-
+     //console.log('DUID:', duidValue);
     }
   }
 
@@ -73,9 +71,6 @@ export class NewTaipeiComponent implements OnInit {
       this.dpAddress = params['dpAddress'] || null;
       this.telephone = params['telephone'] || null;
     });
-
-
-
-
   }
+
 }

@@ -22,7 +22,7 @@ export class SearchComponent {
 
 
   constructor(private formService: FormService ,private router: Router,private route: ActivatedRoute) {
-    this.duid = this.route.snapshot.params['duid'] || '';
+    //this.duid = this.route.snapshot.params['duid'] || '';
   }
 
   //發送Post請求
@@ -31,7 +31,7 @@ export class SearchComponent {
     this.isLoading = true;
 
     const data = {
-      DUID: this.duid,
+      DUID: this.formService.DUID,
       PID: this.pid,
       PName: this.pname
     };
@@ -39,12 +39,12 @@ export class SearchComponent {
     this.formService.sendData(data).subscribe(
       response => {
         //console.log('請求成功：', response);
-        this.appointments = response.Appoints.filter((appointment: any) => appointment.DUID === this.duid);
+        this.appointments = response.Appoints.filter((appointment: any) => appointment.DUID === this.formService.DUID);
         this.showNoData = this.appointments.length === 0;
         this.searchText = this.pid ?
-        `以下是身分證：${this.pid} 的訂車紀錄查詢結果， 共 ${this.appointments.length} 筆資料` :
+        `以下是身分證：${this.appointments} 的訂車紀錄查詢結果， 共 ${this.appointments.length} 筆資料` :
         `以下是您的所有訂車紀錄查詢結果， 共 ${this.appointments.length} 筆資料` ;
-        `以下是姓名：${this.pname} 的訂車紀錄查詢結果，共 ${this.appointments.length} 筆資料` ;
+        `以下是姓名：${this.appointments} 的訂車紀錄查詢結果，共 ${this.appointments.length} 筆資料` ;
         this.isLoading = false;
       },
       error => {

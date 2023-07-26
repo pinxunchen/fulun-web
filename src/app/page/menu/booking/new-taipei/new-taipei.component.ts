@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,OnInit} from '@angular/core';
 
 import { FormService } from './../../../../form.service';
 import { FormBuilder  , Validators } from '@angular/forms';
@@ -9,13 +9,13 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './new-taipei.component.html',
   styleUrls: ['./new-taipei.component.css']
 })
-export class NewTaipeiComponent {
+export class NewTaipeiComponent implements OnInit {
   passengerName: string | null = null;
   passengerId: string | null = null;
   puAddress: string | null = null;
   dpAddress: string | null = null;
   telephone: string | null = null;
-  duid: string | null = null;
+  DUID: string = '';
 
   form: any;
 
@@ -39,9 +39,8 @@ export class NewTaipeiComponent {
 
   onSubmit(f:any){
     if (f.valid) {
-      const duidValue = this.form.get('DUID').value;
-
-      const formData = { ...this.form.value, DUID: duidValue };
+      //const duidValue = this.form.get('DUID').value;
+      const formData = { ...this.form.value, DUID: this.formService.DUID };
       this.formService.submitForm(formData)
         .subscribe(
           response => {
@@ -55,14 +54,20 @@ export class NewTaipeiComponent {
           },
           error => {
             console.error('請求錯誤：', error);
+
           }
         );
     } else {
      alert('請重新確認表單內容！');
+     const duidValue = this.form.get('DUID').value;
+     console.log('DUID:', duidValue); // 確認是否有值被正確設置
+
     }
   }
 
   ngOnInit() {
+
+
     this.route.queryParams.subscribe(params => {
       this.passengerName = params['passengerName'] || null;
       this.passengerId = params['passengerId'] || null;
@@ -72,9 +77,11 @@ export class NewTaipeiComponent {
     });
 
     this.route.params.subscribe(params => {
-      this.duid = params['duid'] || null;
+      this.formService.DUID = params['duid'] ;
       //console.log('duid:', this.duid);
-      this.form.patchValue({ DUID: this.duid });
+      this.form.patchValue({ DUID: this.formService.DUID });
     });
+
+
   }
 }

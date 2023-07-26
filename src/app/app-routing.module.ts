@@ -7,6 +7,10 @@ import { MenuComponent } from './page/menu/menu.component';
 
 const routes: Routes = [
   {
+    path: 'menu',
+    component: MenuComponent
+  },
+  {
     path: '',
     redirectTo: '/menu',
     pathMatch: 'full'
@@ -16,10 +20,7 @@ const routes: Routes = [
     redirectTo: '/menu',
     pathMatch: 'full'
   },
-  {
-    path: 'menu',
-    component: MenuComponent
-  },
+
 
 ];
 

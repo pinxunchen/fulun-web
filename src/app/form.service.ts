@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 export class FormService {
   private apiUrl = 'https://www.crowntaxi.com.tw/CTW/Service.svc/';
 
+  DUID:string = "";
+
   constructor(private http: HttpClient) { }
 
   //表單提交

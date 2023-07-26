@@ -15,7 +15,7 @@ export class NewTaipeiComponent implements OnInit {
   puAddress: string | null = null;
   dpAddress: string | null = null;
   telephone: string | null = null;
-  DUID: string = '';
+  DUID: string = "";
 
   form: any;
 
@@ -27,7 +27,7 @@ export class NewTaipeiComponent implements OnInit {
       RTime: ['', [Validators.required]],
       BTime: '無回程',
       Area: '新北',
-      DUID: ['', [Validators.required]],
+      DUID: [this.formService.DUID, [Validators.required]],
       PUAddress: ['', [Validators.required]],
       DPAddress: ['', [Validators.required]],
       Telephone: ['', [Validators.required, Validators.minLength(10)]],
@@ -66,8 +66,6 @@ export class NewTaipeiComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
     this.route.queryParams.subscribe(params => {
       this.passengerName = params['passengerName'] || null;
       this.passengerId = params['passengerId'] || null;
@@ -76,11 +74,7 @@ export class NewTaipeiComponent implements OnInit {
       this.telephone = params['telephone'] || null;
     });
 
-    this.route.params.subscribe(params => {
-      this.formService.DUID = params['duid'] ;
-      //console.log('duid:', this.duid);
-      this.form.patchValue({ DUID: this.formService.DUID });
-    });
+
 
 
   }

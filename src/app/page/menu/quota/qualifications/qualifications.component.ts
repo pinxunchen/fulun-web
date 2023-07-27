@@ -52,7 +52,7 @@ export class QualificationsComponent {
         this.splitTelephones = this.qualifications[0]?.Telephone ? this.qualifications[0].Telephone.split('\n') : [];
 
 
-        console.log('LTCCaseList:', response);
+        //console.log('LTCCaseList:', response);
         //關閉spinner
         this.isLoading = false;
       },
@@ -68,7 +68,8 @@ export class QualificationsComponent {
     this.router.navigate(['/menu/booking/newTaipei'], {
       queryParams: {
         passengerName: qualification.PassengerName,
-        passengerId: qualification.PassengerId
+        passengerId: qualification.PassengerId,
+        puAddress: qualification.Contact,
       }
     });
   }

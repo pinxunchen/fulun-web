@@ -31,8 +31,10 @@
     <div *ngFor="let qualification of qualifications" class="quota-card" (click)="passDataToNewTaipeiComponent(qualification)">
       <p>個案姓名： {{ qualification.PassengerName }}</p>
       <p>身分證字號： {{ qualification.PassengerId }}</p>
-      <p>身分別： {{ qualification.Category }}戶</p>
-      <p>家屬姓名： {{ qualification.Contact }}</p>
+      <p>身分別： {{ qualification.Category }}</p>
+      <p>居住地址 ( 衛福系統登記 )：</p>
+      <p>{{ qualification.Contact }}</p>
+      <p></p>
 
       <div *ngIf="splitTelephones.length > 0">
         <p>連絡電話：</p>

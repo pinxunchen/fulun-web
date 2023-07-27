@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { FormService } from 'src/app/form.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-qualifications',
@@ -23,7 +23,7 @@ export class QualificationsComponent {
   showNoDataMessage = false;
 
 
-  constructor(private formService: FormService) {}
+  constructor(private formService: FormService, private router: Router) {}
 
   searchQuota() {
     this.qualifications=[];
@@ -52,7 +52,7 @@ export class QualificationsComponent {
         this.splitTelephones = this.qualifications[0]?.Telephone ? this.qualifications[0].Telephone.split('\n') : [];
 
 
-        //console.log('LTCCaseList:', response);
+        console.log('LTCCaseList:', response);
         //關閉spinner
         this.isLoading = false;
       },
@@ -63,11 +63,21 @@ export class QualificationsComponent {
     );
   }
 
-    clearInputs() {
-      this.qualifications = [];
-      this.key = '';
-      this.showNoDataMessage = false;
-      this.showEmptyKeyWarning = false;
-      this.isLoading = false;
+  //傳遞資料到newTaipei頁面
+  passDataToNewTaipeiComponent(qualification: any) {
+    this.router.navigate(['/menu/booking/newTaipei'], {
+      queryParams: {
+        passengerName: qualification.PassengerName,
+        passengerId: qualification.PassengerId
+      }
+    });
+  }
+
+  clearInputs() {
+    this.qualifications = [];
+    this.key = '';
+    this.showNoDataMessage = false;
+    this.showEmptyKeyWarning = false;
+    this.isLoading = false;
     }
 }

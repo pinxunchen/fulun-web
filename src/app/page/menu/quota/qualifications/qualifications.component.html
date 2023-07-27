@@ -25,7 +25,10 @@
   </div>
 
   <div *ngIf="qualifications.length > 0">
-    <div *ngFor="let qualification of qualifications" class="quota-card">
+    <div class="text">
+      <h4>▼點擊下方卡片可以直接跳轉到預約訂車頁面▼</h4>
+    </div>
+    <div *ngFor="let qualification of qualifications" class="quota-card" (click)="passDataToNewTaipeiComponent(qualification)">
       <p>個案姓名： {{ qualification.PassengerName }}</p>
       <p>身分證字號： {{ qualification.PassengerId }}</p>
       <p>身分別： {{ qualification.Category }}戶</p>

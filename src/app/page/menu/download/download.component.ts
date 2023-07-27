@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 interface LinkItem {
   label: string;
@@ -37,12 +37,6 @@ export class DownloadComponent {
         { label: '交通出勤報表', url: 'https://drive.google.com/file/d/1t_9gLWtI8cT5RM18-vZeX1XZFkdhGjHs/view?usp=drive_link' },
         { label: '收據黏貼表', url: 'https://drive.google.com/file/d/1zPhuSbODhp4NmgNbrLdnNGu_ZO_8T5j2/view?usp=drive_link' },
         { label: '風險同意書(民眾)', url: 'https://drive.google.com/file/d/1XxUVbfjBfFTHGx2WAZiPi_aiJjETXc-J/view?usp=drive_link' },
-      ]
-    },
-    {
-      name: '新北',
-      links: [
-        { label: '爬梯機請款表', url: '/menu/quota/quota-search' },
       ]
     },
     {

@@ -10,10 +10,17 @@
       <h3>{{ menu.name }}</h3>
       <hr *ngIf="!last" class="menu-divider">
       <div [ngClass]="{'sub-menu': true, 'open': activeMenu === menu.name}">
-        <a *ngFor="let link of menu.links" [routerLink]="link.url">{{ link.label }}</a>
+        <!-- <a *ngFor="let link of menu.links" [routerLink]="link.url">{{ link.label }}</a> -->
+        <a *ngFor="let link of menu.links" [href]="link.url">{{ link.label }} </a>
         <hr *ngIf="!last" class="menu-divider">
       </div>
     </div>
+
+
   </ng-container>
+
+  <div class="newTaipei" routerLink="menu/quota/quota-search">
+    <h3>新北</h3>
+  </div>
 
 </div>

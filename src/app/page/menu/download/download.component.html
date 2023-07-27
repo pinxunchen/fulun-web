@@ -15,12 +15,13 @@
         <hr *ngIf="!last" class="menu-divider">
       </div>
     </div>
-
-
   </ng-container>
 
-  <div class="newTaipei" routerLink="menu/quota/quota-search">
+  <div class="newTaipei" (click)="navigateToQuotaSearch()">
+    <hr class="menu-divider">
     <h3>新北</h3>
+    <hr class="menu-divider">
   </div>
+
 
 </div>

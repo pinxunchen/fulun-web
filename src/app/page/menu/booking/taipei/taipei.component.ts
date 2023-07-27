@@ -2,7 +2,9 @@ import { Component ,OnInit} from '@angular/core';
 
 import { FormService } from './../../../../form.service';
 import { FormBuilder  , Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute , Router } from '@angular/router';
+
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -21,7 +23,11 @@ export class TaipeiComponent implements OnInit {
 
   form: any;
 
-  constructor(private fb: FormBuilder , private formService: FormService,private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder ,
+     private formService: FormService,
+     private route: ActivatedRoute,
+     private router: Router)
+      {
     this.form = this.fb.group({
       PassengerName: ['', [Validators.required]],
       PassengerId: ['', [Validators.required, Validators.minLength(10)]],
@@ -39,6 +45,7 @@ export class TaipeiComponent implements OnInit {
   }
 
 
+
   onSubmit(f:any){
     if (f.valid) {
       //const duidValue = this.form.get('DUID').value;
@@ -47,19 +54,25 @@ export class TaipeiComponent implements OnInit {
         .subscribe(
           response => {
             //console.log('請求成功：', response);
-            const message = `表單成功提交！\n個案姓名 : ${formData.PassengerName}\n日期 : ${formData.Date}\n去程時間 : ${formData.RTime}\n回程時間 : ${formData.BTime}\n出發地點 : ${formData.PUAddress}\n目的地點 : ${formData.DPAddress}`;
-            alert(message);
+            const message = `<b>個案姓名</b> : ${formData.PassengerName}
+            <br><b>日期</b> : ${formData.Date}
+            <br><b>去程時間</b> : ${formData.RTime}
+            <br><b>回程時間</b> : ${formData.BTime}
+            <br><b>出發地點</b> : ${formData.PUAddress}
+            <br><b>目的地點</b> : ${formData.DPAddress}`;
+            this.showAlert(message);
             this.form.reset();
             // 跳轉回menu
-            //this.router.navigate(['/menu']);
+            this.router.navigate(['/menu']);
           },
           error => {
-            console.error('請求錯誤：', error);
+            //console.error('請求錯誤：', error);
           }
         );
     } else {
-     alert('請重新確認表單內容！');
-     const duidValue = this.form.get('DUID').value;
+      const message = '請重新確認表單內容！'
+      this.showFailAlert(message);
+      const duidValue = this.form.get('DUID').value;
      //console.log('DUID:', duidValue);
     }
   }
@@ -71,6 +84,23 @@ export class TaipeiComponent implements OnInit {
       this.puAddress = params['puAddress'] || null;
       this.dpAddress = params['dpAddress'] || null;
       this.telephone = params['telephone'] || null;
+    });
+  }
+
+  showAlert(message: string): void {
+    Swal.fire({
+      title: `<b>提交成功！</b>`,
+      html: `<b>${message}</b>`,
+      icon: 'success',
+      confirmButtonText: '確定'
+    });
+  }
+
+  showFailAlert(message: string): void {
+    Swal.fire({
+      html: `<b>${message}</b>`,
+      icon: 'error',
+      confirmButtonText: '確定'
     });
   }
 

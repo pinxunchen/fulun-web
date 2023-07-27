@@ -20,6 +20,7 @@ interface MenuItem {
 
 
 export class DownloadComponent {
+  constructor(private router: Router) {}
   menus: MenuItem[] = [
     {
       name: '福倫文件',
@@ -55,15 +56,16 @@ export class DownloadComponent {
         { label: '輔具照片', url: 'https://drive.google.com/file/d/1Yjlz-v-LlAXKne6LSk0aJPa3Ehn2cZSY/view?usp=drive_link' },
       ]
     },
-    {
-      name: '',
-      links: [      ]
-    },
+
   ];
 
   activeMenu: string | null = null;
 
   toggleMenu(menuName: string): void {
     this.activeMenu = this.activeMenu === menuName ? null : menuName;
+  }
+
+  navigateToQuotaSearch(): void {
+    this.router.navigateByUrl('menu/quota/quota-search');
   }
 }

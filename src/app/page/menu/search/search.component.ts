@@ -3,6 +3,8 @@ import { Component   } from '@angular/core';
 import { FormService } from 'src/app/form.service';
 import { Router , ActivatedRoute } from '@angular/router';
 
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-search',
@@ -102,8 +104,13 @@ export class SearchComponent {
 
 
     //提示
-    showPrompt() {
-      alert('請輸入個案 "身分證" 或 "姓名" 後點擊查詢，直接點擊查詢可查看您的全部趟次');
+    showPrompt(): void {
+      Swal.fire({
+        html: '<b>請輸入個案 "身分證" 或 "姓名" 後點擊查詢，<br>直接點擊查詢可查看您的全部趟次</br>',
+        icon: 'info',
+        confirmButtonText: '確認'
+      });
     }
+
 }
 

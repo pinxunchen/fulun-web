@@ -37,9 +37,8 @@
       <p></p>
 
       <div *ngIf="splitTelephones.length > 0">
-        <p>連絡電話：</p>
         <ng-container *ngFor="let phone of splitTelephones">
-          <p>{{ phone }}</p>
+          <p>連絡電話：{{ phone }}</p>
         </ng-container>
       </div>
   </div>

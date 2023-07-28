@@ -5,12 +5,13 @@
   background-color: black;
   margin-bottom: 15px;
   padding: 0;
-  justify-content:space-between;
+  justify-content:flex-start;
   height: 45px;
 }
 
 .mat-mdc-icon-button.mat-mdc-button-base{
   height: 45px;
+  margin-bottom: 8px;
 }
 
 .nav_text{
@@ -23,7 +24,7 @@
   text-decoration: none;
   color: white;
   height: 40px;
-  width: 200px;
+  width: 150px;
 }
 
 .notify{
@@ -34,12 +35,8 @@
 .text{
   display: flex;
   justify-content: center;
+  width: 80%;
+  margin-right: 40px;
 }
 
-.home{
-  display: flex;
-  justify-content: center;
-  font-size: 22px;
-  width: 48px;
-}
 

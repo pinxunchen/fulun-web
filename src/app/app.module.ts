@@ -12,9 +12,11 @@ import { HeaderComponent } from './core/component/header/header.component';
 import { MenuComponent } from './page/menu/menu.component';
 import { MenuModule } from './page/menu/menu.module';
 import { MenuRoutingModule } from './page/menu/menu-routing.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { HomeComponent } from './core/home/home.component';
 
 
 
@@ -24,6 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
     AppComponent,
     HeaderComponent,
     MenuComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { MatButtonModule } from '@angular/material/button';
     MenuRoutingModule,
     MatMenuModule,
     MatIconModule,
+    DragDropModule,
     MatButtonModule,
     HttpClientModule,
     AppRoutingModule

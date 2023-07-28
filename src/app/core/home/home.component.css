@@ -1,7 +1,7 @@
 mat-icon {
   position: absolute;
-  top: 250px; /* 設定初始位置 */
-  left: 350px; /* 設定初始位置 */
+  top: 100px; /* 設定初始位置 */
+  left: 0px; /* 設定初始位置 */
   font-size: 28px;
   cursor: move; /* 添加拖拉指示器 */
   width: 32px;

@@ -7,10 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./quota-count.component.css']
 })
 export class QuotaCountComponent {
-
+  multiplier:any;
   numberInput: any;
   selectedCategory: any;
   selectedFloor: any;
+
 
   selectCategory(category: string): void {
     this.selectedCategory = category;
@@ -58,6 +59,8 @@ export class QuotaCountComponent {
 
     return (multiplier - this.numberInput * baseAmount).toFixed(2);
   }
+
+
 
 
   validateNumber(): void {

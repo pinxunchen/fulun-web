@@ -23,9 +23,9 @@ h1 {
 }
 
 input{
-  padding-left: 8px;
+  padding-left: 5px;
   height: 36px;
-  font-size: 18x;
+  font-size: 15px;
 }
 
 label{
@@ -50,7 +50,7 @@ a{
 
 .input-area{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-top: 20px;
 }
@@ -69,6 +69,9 @@ a{
   line-height: 1.5;
 }
 
+.keyInput{
+  width: 50%;
+}
 
 h4{
   display: flex;
@@ -83,4 +86,11 @@ h4{
   font-size: 24px;
   font-weight: bold;
   letter-spacing: 2px;
+}
+
+.btn-g{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

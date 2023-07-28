@@ -1,7 +1,7 @@
 <div class="container">
   <h1>新北長照資格查詢</h1>
   <div class="input-area">
-    <input type="text" id="keyInput" placeholder="請輸入個案姓名或身分證" [(ngModel)]="key">
+    <input type="text" id="keyInput" class="keyInput" placeholder="請輸入姓名或身分證" [(ngModel)]="key">
     <div class="btn-g">
       <button class="btn btn-dark" (click)="searchQuota()">查詢</button>
       <button class="btn btn-danger" (click)="clearInputs()">清除</button>

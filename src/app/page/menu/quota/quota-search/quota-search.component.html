@@ -6,7 +6,7 @@
   </div>
 
   <div class="input-area">
-    <input type="text" id="keyInput" class="keyInput" placeholder="請輸入個案姓名或身分證" [(ngModel)]="key">
+    <input type="text" id="keyInput" class="keyInput" placeholder="請輸入姓名或身分證" [(ngModel)]="key">
     <div class="btn-g">
       <button class="btn btn-dark" (click)="searchQuota()">查詢</button>
       <button class="btn btn-danger" (click)="clearInputs()">清除</button>
@@ -26,7 +26,8 @@
   </div>
 
   <div *ngIf="LTCQuotaList.length === 0 && showNoDataMessage" class="no-data-text">
-    <p>查無資料，請重新確認輸入內容！</p>
+    <p>查無資料，請重新確認輸入內容，新個案請聯絡Line@人員協助下載，謝謝！</p>
+    <a href="https://lin.ee/F9sIMMq" target="_blank">新北爬梯機Line@</a>
   </div>
 
   <div *ngIf="quotas.length > 0">

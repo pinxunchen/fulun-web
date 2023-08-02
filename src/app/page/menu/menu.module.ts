@@ -14,6 +14,11 @@ import { QuotaCountComponent } from './quota/quota-count/quota-count.component';
 import { FormsModule } from '@angular/forms';
 import { QualificationsComponent } from './quota/qualifications/qualifications.component';
 
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +37,11 @@ import { QualificationsComponent } from './quota/qualifications/qualifications.c
     CommonModule,
     MenuRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatNativeDateModule,
   ],
   exports:[
     BookingComponent,

@@ -3,6 +3,7 @@ import { Component   } from '@angular/core';
 import { FormService } from 'src/app/form.service';
 import { Router , ActivatedRoute } from '@angular/router';
 
+
 import Swal from 'sweetalert2';
 
 
@@ -22,8 +23,16 @@ export class SearchComponent {
   searchText: string = '';
   ascendingOrder: boolean = false;
 
+  startDate: string = '';
+  endDate: string = '';
+  showDateFilter: boolean = false;
+  originalAppointments: any[] = [];
 
-  constructor(private formService: FormService ,private router: Router,private route: ActivatedRoute) {
+
+  constructor(
+    private formService: FormService ,
+    private router: Router,
+    private route: ActivatedRoute) {
     //this.duid = this.route.snapshot.params['duid'] || '';
   }
 
@@ -46,6 +55,10 @@ export class SearchComponent {
         this.searchText = this.pid ?
         `以下是您的所有訂車紀錄查詢結果， 共 ${this.appointments.length} 筆資料` :
         `以下是您的所有訂車紀錄查詢結果， 共 ${this.appointments.length} 筆資料` ;
+        //將原始資料存到originalAppointments
+        this.originalAppointments = response.Appoints.filter((appointment: any) => appointment.DUID === this.formService.DUID);
+        this.appointments = this.originalAppointments;
+        this.updateSearchText();
         this.isLoading = false;
       },
       error => {
@@ -62,6 +75,8 @@ export class SearchComponent {
     this.pname = '';
     this.appointments = [];
     this.showNoData = false;
+    this.startDate = '';
+    this.endDate = '';
   }
 
 
@@ -111,5 +126,62 @@ export class SearchComponent {
       });
     }
 
-}
 
+    // 新增filterAppointments函式
+    filterAppointments() {
+      if (this.startDate && this.endDate) {
+        this.appointments = this.originalAppointments.filter((appointment: any) => {
+          const appointmentDate = this.parseApiDate(appointment.Date);
+          const startDate = new Date(this.startDate);
+          const endDate = new Date(this.endDate);
+          return appointmentDate >= startDate && appointmentDate <= endDate;
+        });
+      } else {
+        this.appointments = this.originalAppointments;
+      }
+
+      // 判斷篩選後的筆數是否為 0
+      this.showNoData = this.appointments.length === 0;
+
+      this.updateSearchText();
+    }
+
+
+     //按篩選才執行
+    onFilterButtonClick() {
+        this.filterAppointments();
+        this.showDateFilter = false;
+      }
+
+
+
+    //將api傳回的date格式轉換成語input相同
+    parseApiDate(apiDate: string): Date {
+      const [month, day] = apiDate.split('/');
+      const currentYear = new Date().getFullYear();
+      return new Date(`${currentYear}-${month}-${day}`);
+    }
+
+    //篩選後顯示的筆數
+    getFilteredAppointmentCount(): number {
+      return this.appointments.length;
+    }
+
+
+    //更新筆數
+    updateSearchText() {
+      if (this.pid) {
+        this.searchText = `以下是您的所有訂車紀錄查詢結果， 共 ${this.getFilteredAppointmentCount()} 筆資料`;
+      } else if (this.startDate && this.endDate) {
+        this.searchText = `以下是您 ${this.startDate} 到 ${this.endDate}的訂車紀錄查詢結果， 共 ${this.getFilteredAppointmentCount()} 筆資料`;
+      } else {
+        this.searchText = `以下是您的所有訂車紀錄查詢結果， 共 ${this.getFilteredAppointmentCount()} 筆資料`;
+      }
+    }
+
+
+    toggleDateFilter() {
+      this.showDateFilter = !this.showDateFilter;
+    }
+
+}

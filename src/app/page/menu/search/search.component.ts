@@ -130,11 +130,14 @@ export class SearchComponent {
     // 新增filterAppointments函式
     filterAppointments() {
       if (this.startDate && this.endDate) {
+        // 將起始日期減少一天，將結束日期增加一天
+        const startDate = new Date(this.startDate);
+        startDate.setDate(startDate.getDate() - 1);
+        const endDate = new Date(this.endDate);
+
         this.appointments = this.originalAppointments.filter((appointment: any) => {
           const appointmentDate = this.parseApiDate(appointment.Date);
-          const startDate = new Date(this.startDate);
-          const endDate = new Date(this.endDate);
-          return appointmentDate >= startDate && appointmentDate <= endDate;
+          return appointmentDate > startDate && appointmentDate < endDate;
         });
       } else {
         this.appointments = this.originalAppointments;

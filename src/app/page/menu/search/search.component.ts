@@ -130,7 +130,7 @@ export class SearchComponent {
     // 新增filterAppointments函式
     filterAppointments() {
       if (this.startDate && this.endDate) {
-        // 將起始日期減少一天，將結束日期增加一天
+        // 將起始日期減少一天
         const startDate = new Date(this.startDate);
         startDate.setDate(startDate.getDate() - 1);
         const endDate = new Date(this.endDate);

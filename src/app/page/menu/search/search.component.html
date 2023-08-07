@@ -44,9 +44,11 @@
         <label for="endDateInput">結束日期：</label>
         <input type="date" id="endDateInput" [(ngModel)]="endDate">
     </div>
+
     <div class="filter">
       <button class="btn btn-dark" (click)="onFilterButtonClick()">篩選</button>
     </div>
+
     </div>
 
 
@@ -77,6 +79,18 @@
             <p>預約時間 : {{ appointment.RTime }} | {{ appointment.BTime }}</p>
             <p>上車地點 : {{ appointment.PUAddress }}</p>
             <p>下車地點 : {{ appointment.DPAddress }}</p>
+
+            <div *ngIf="appointment.Quota === ''">
+              <p>輔具額度：查無紀錄</p>
+            </div>
+            <div *ngIf="appointment.Quota > 4001">
+              <p>輔具額度：{{ appointment.Quota }}</p>
+            </div>
+            <div *ngIf="appointment.Quota < 4000" class="text-danger">
+              <p>輔具額度：{{ appointment.Quota }}</p>
+              <p>額度即將使用完畢，如需轉市款專案或有其他問題，請通知相關人員處理，謝謝！ </p>
+            </div>
+
           </div>
         </div>
       </div>

@@ -70,7 +70,7 @@ export class QuotaSearchComponent {
         //提示
         showPrompt(): void {
           Swal.fire({
-            html: '<b><br>僅提供下載已請款過個案的請款表，新個案請聯絡Line@人員協助下載</br>',
+            html: '<b><br>僅提供下載已請款過個案的請款表<br>新個案請聯絡Line@人員協助下載</br>',
             icon: 'info',
             confirmButtonText: '確認'
           });

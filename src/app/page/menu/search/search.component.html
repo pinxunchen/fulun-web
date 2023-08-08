@@ -86,7 +86,7 @@
             <div *ngIf="appointment.Quota > 4001">
               <p>輔具額度：{{ appointment.Quota }}</p>
             </div>
-            <div *ngIf="appointment.Quota < 4000" class="text-danger">
+            <div *ngIf="appointment.Quota !== '' && appointment.Quota < 4000" class="text-danger">
               <p>輔具額度：{{ appointment.Quota }}</p>
               <p>額度即將使用完畢，如需轉市款專案或有其他問題，請通知相關人員處理，謝謝！ </p>
             </div>

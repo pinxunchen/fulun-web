@@ -29,7 +29,7 @@
   <div class="form-group">
     <label for="Date">預約日期： </label>
     <input type="date" class="form-control" id="Date" formControlName="Date">
-    <div class="text-danger" *ngIf="form.controls.Date.errors && form.controls.Date.touched && form.controls.DateDate.invalid">
+    <div class="text-danger" *ngIf="form.controls.Date.errors && form.controls.Date.touched && form.controls.Date.invalid">
       <div *ngIf="form.controls.Date.errors.required">*預約日期為必填欄位</div>
     </div>
   </div>
@@ -68,7 +68,7 @@
     <input type="tel" class="form-control" id="Telephone" formControlName="Telephone" [(ngModel)]="telephone"  inputmode="numeric" placeholder="格式：0912345678">
     <div class="text-danger" *ngIf="form.controls.Telephone.errors && form.controls.Telephone.touched && form.controls.Telephone.invalid">
       <div *ngIf="form.controls.Telephone.errors.required">*聯絡方式為必填欄位</div>
-      <div *ngIf="form.controls.Telephone.errors.minlength">*請輸入正確行動電話</div>
+      <div *ngIf="form.controls.Telephone.errors.minlength">*請輸入正確行動電話共十碼</div>
     </div>
   </div>
 

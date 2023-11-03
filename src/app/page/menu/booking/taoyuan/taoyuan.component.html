@@ -93,9 +93,12 @@
 
 
 
-<div class="btn">
-  <button type="submit" class="btn btn-dark" >提交</button>
-</div>
+
+  <div class="btn">
+    <button type="submit" class="btn btn-dark" [disabled]="isSubmitting">
+      {{ buttonText }}
+    </button>
+  </div>
 
 </form>
 

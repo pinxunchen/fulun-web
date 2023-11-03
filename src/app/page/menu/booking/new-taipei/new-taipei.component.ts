@@ -22,6 +22,10 @@ export class NewTaipeiComponent implements OnInit {
 
   form: any;
 
+  buttonText: string = '提交';
+  isSubmitting: boolean = false;
+
+
   constructor(private fb: FormBuilder ,
     private formService: FormService,
     private route: ActivatedRoute,
@@ -48,11 +52,13 @@ export class NewTaipeiComponent implements OnInit {
  onSubmit(f:any){
    if (f.valid) {
      //const duidValue = this.form.get('DUID').value;
+     this.isSubmitting = true;
      const formData = { ...this.form.value, DUID: this.formService.DUID };
      this.formService.submitForm(formData)
        .subscribe(
          response => {
            //console.log('請求成功：', response);
+           this.buttonText = '提交中...';
            const message = `<b>個案姓名</b> : ${formData.PassengerName}
            <br><b>日期</b> : ${formData.Date}
            <br><b>去程時間</b> : ${formData.RTime}
@@ -66,12 +72,14 @@ export class NewTaipeiComponent implements OnInit {
          },
          error => {
            //console.error('請求錯誤：', error);
+           this.buttonText = '提交';
          }
        );
    } else {
      const message = '請重新確認表單內容！'
      this.showFailAlert(message);
      const duidValue = this.form.get('DUID').value;
+     this.buttonText = '提交';
     //console.log('DUID:', duidValue);
    }
  }

@@ -23,6 +23,10 @@ export class TaoyuanComponent implements OnInit {
 
   form: any;
 
+  buttonText: string = '提交';
+  isSubmitting: boolean = false;
+
+
   constructor(private fb: FormBuilder ,
     private formService: FormService,
     private route: ActivatedRoute,
@@ -47,35 +51,39 @@ export class TaoyuanComponent implements OnInit {
 
 
  onSubmit(f:any){
-   if (f.valid) {
-     //const duidValue = this.form.get('DUID').value;
-     const formData = { ...this.form.value, DUID: this.formService.DUID };
-     this.formService.submitForm(formData)
-       .subscribe(
-         response => {
-           //console.log('請求成功：', response);
-           const message = `<b>個案姓名</b> : ${formData.PassengerName}
-           <br><b>日期</b> : ${formData.Date}
-           <br><b>去程時間</b> : ${formData.RTime}
-           <br><b>回程時間</b> : ${formData.BTime}
-           <br><b>出發地點</b> : ${formData.PUAddress}
-           <br><b>目的地點</b> : ${formData.DPAddress}`;
-           this.showAlert(message);
-           this.form.reset();
-           // 跳轉回menu
-           this.router.navigate(['/menu']);
-         },
-         error => {
-           //console.error('請求錯誤：', error);
-         }
-       );
-   } else {
-     const message = '請重新確認表單內容！'
-     this.showFailAlert(message);
-     const duidValue = this.form.get('DUID').value;
-    //console.log('DUID:', duidValue);
-   }
- }
+  if (f.valid) {
+    //const duidValue = this.form.get('DUID').value;
+    this.isSubmitting = true;
+    const formData = { ...this.form.value, DUID: this.formService.DUID };
+    this.formService.submitForm(formData)
+      .subscribe(
+        response => {
+          //console.log('請求成功：', response);
+          this.buttonText = '提交中...';
+          const message = `<b>個案姓名</b> : ${formData.PassengerName}
+          <br><b>日期</b> : ${formData.Date}
+          <br><b>去程時間</b> : ${formData.RTime}
+          <br><b>回程時間</b> : ${formData.BTime}
+          <br><b>出發地點</b> : ${formData.PUAddress}
+          <br><b>目的地點</b> : ${formData.DPAddress}`;
+          this.showAlert(message);
+          this.form.reset();
+          // 跳轉回menu
+          this.router.navigate(['/menu']);
+        },
+        error => {
+          //console.error('請求錯誤：', error);
+          this.buttonText = '提交';
+        }
+      );
+  } else {
+    const message = '請重新確認表單內容！'
+    this.showFailAlert(message);
+    const duidValue = this.form.get('DUID').value;
+    this.buttonText = '提交';
+   //console.log('DUID:', duidValue);
+  }
+}
 
  ngOnInit() {
    this.route.queryParams.subscribe(params => {

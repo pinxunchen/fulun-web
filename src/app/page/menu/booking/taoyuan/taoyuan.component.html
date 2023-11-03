@@ -35,15 +35,19 @@
 
   <div class="form-group">
     <label for="RTime">去程時間： </label>
-    <input type="time" class="form-control" id="RTime" formControlName="RTime">
-    <div class="text-danger" *ngIf="form.controls.RTime.errors && form.controls.RTime.touched && form.controls.RTime.invalid">
-      <div *ngIf="form.controls.RTime.errors.required">*去程時間為必填欄位</div>
+    <div class="timepicker">
+      <p-calendar formControlName="RTime" [timeOnly]="true" [showIcon]="true" placeholder="選擇去程時間" [stepHour]="1" [stepMinute]="15"></p-calendar>
+      <div class="text-danger" *ngIf="form.controls.RTime.errors && form.controls.RTime.touched && form.controls.RTime.invalid">
+        <div *ngIf="form.controls.RTime.errors.required">*去程時間為必填欄位</div>
+      </div>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="BTime">回程時間 ( 如果只有單趟就不用填 )： </label>
-    <input type="time" class="form-control" id="BTime" formControlName="BTime">
+    <div class="timepicker">
+      <label for="BTime">回程時間 ( 如果只有單趟就不用填 )： </label>
+      <p-calendar formControlName="BTime" [timeOnly]="true" [showIcon]="true" placeholder="選擇回程時間" [stepHour]="1" [stepMinute]="15"></p-calendar>
+    </div>
   </div>
 
   <div class="form-group">

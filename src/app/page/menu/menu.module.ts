@@ -18,6 +18,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ButtonModule } from 'primeng/button';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputMaskModule } from 'primeng/inputmask';
+import { CalendarModule } from 'primeng/calendar';
 
 
 @NgModule({
@@ -35,13 +41,18 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   imports: [
     CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     MenuRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
     MatDatepickerModule,
     MatDialogModule,
+    InputMaskModule,
+    CalendarModule,
     MatNativeDateModule,
+    ButtonModule
   ],
   exports:[
     BookingComponent,

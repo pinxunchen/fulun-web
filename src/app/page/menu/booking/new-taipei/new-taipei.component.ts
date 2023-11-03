@@ -3,6 +3,7 @@ import { Component , OnInit } from '@angular/core';
 import { FormService } from './../../../../form.service';
 import { FormBuilder  , Validators } from '@angular/forms';
 import { ActivatedRoute  , Router} from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 import Swal from 'sweetalert2';
 
@@ -29,14 +30,18 @@ export class NewTaipeiComponent implements OnInit {
   constructor(private fb: FormBuilder ,
     private formService: FormService,
     private route: ActivatedRoute,
-    private router: Router)
+    private router: Router,
+    private datePipe: DatePipe)
      {
-   this.form = this.fb.group({
+      const defaultTime = new Date();
+      defaultTime.setHours(8, 0, 0, 0);
+
+     this.form = this.fb.group({
      PassengerName: ['', [Validators.required]],
      PassengerId: ['', [Validators.required, Validators.minLength(10)]],
      Date: ['', [Validators.required]],
-     RTime: ['', [Validators.required]],
-     BTime: '無回程',
+     RTime: [defaultTime, [Validators.required]],
+     BTime: [defaultTime],
      Area: '新北',
      DUID: [this.formService.DUID, [Validators.required]],
      PUAddress: ['', [Validators.required]],
@@ -54,6 +59,8 @@ export class NewTaipeiComponent implements OnInit {
      //const duidValue = this.form.get('DUID').value;
      this.isSubmitting = true;
      const formData = { ...this.form.value, DUID: this.formService.DUID };
+     formData.RTime = this.formatTime(formData.RTime as Date);
+     formData.BTime = this.formatTime(formData.BTime as Date);
      this.formService.submitForm(formData)
        .subscribe(
          response => {
@@ -110,5 +117,14 @@ export class NewTaipeiComponent implements OnInit {
      confirmButtonText: '確定'
    });
  }
+
+ formatTime(date: Date | null): string {
+  if (date) {
+    return this.datePipe.transform(date, 'HH:mm') || '';
+  } else {
+    return '無回程';
+  }
+}
+
 
 }

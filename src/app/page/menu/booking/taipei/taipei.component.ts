@@ -63,7 +63,7 @@ export class TaipeiComponent implements OnInit {
      this.formService.submitForm(formData)
        .subscribe(
          response => {
-           //console.log('請求成功：', response);
+           //console.log('請求成功：', formData);
            this.buttonText = '提交中...';
            const message = `<b>個案姓名</b> : ${formData.PassengerName}
            <br><b>日期</b> : ${formData.Date}
@@ -79,6 +79,7 @@ export class TaipeiComponent implements OnInit {
          error => {
            //console.error('請求錯誤：', error);
            this.buttonText = '提交';
+           this.isSubmitting = false;
          }
        );
    } else {
@@ -86,6 +87,7 @@ export class TaipeiComponent implements OnInit {
      this.showFailAlert(message);
      const duidValue = this.form.get('DUID').value;
      this.buttonText = '提交';
+     this.isSubmitting = false;
     //console.log('DUID:', duidValue);
    }
  }

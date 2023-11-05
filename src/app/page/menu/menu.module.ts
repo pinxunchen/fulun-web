@@ -19,11 +19,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ButtonModule } from 'primeng/button';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputMaskModule } from 'primeng/inputmask';
 import { CalendarModule } from 'primeng/calendar';
+
+
 
 
 @NgModule({
@@ -52,6 +55,7 @@ import { CalendarModule } from 'primeng/calendar';
     InputMaskModule,
     CalendarModule,
     MatNativeDateModule,
+    MultiSelectModule,
     ButtonModule
   ],
   exports:[

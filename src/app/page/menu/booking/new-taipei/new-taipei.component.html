@@ -26,11 +26,13 @@
   </div>
 
   <div class="form-group">
-    <label for="Date">預約日期： </label>
-    <input type="date" class="form-control" id="Date" formControlName="Date">
-    <div class="text-danger" *ngIf="form.controls.Date.errors && form.controls.Date.touched && form.controls.Date.invalid">
-      <div *ngIf="form.controls.Date.errors.required">*預約日期為必填欄位</div>
+    <label for="Date">預約日期( 可選多天 )： </label>
+    <div class="timepicker">
+    <p-calendar formControlName="Dates" selectionMode="multiple" [showIcon]="true" [locale]="ch" [readonlyInput]="true"></p-calendar>
+    <div class="text-danger" *ngIf="form.controls.Dates.errors && form.controls.Dates.touched && form.controls.Dates.invalid">
+      <div *ngIf="form.controls.Dates.errors.required">*預約日期為必填欄位</div>
     </div>
+  </div>
   </div>
 
   <div class="form-group">
@@ -45,8 +47,8 @@
 
   <div class="form-group">
     <div class="timepicker">
-      <label for="BTime">回程時間 ( 如果只有單趟就不用填 )： </label>
-      <p-calendar formControlName="BTime" [timeOnly]="true" [showIcon]="true" placeholder="選擇回程時間" [stepHour]="1" [stepMinute]="15"></p-calendar>
+      <label for="BTime">回程時間 ： </label>
+      <p-calendar formControlName="BTime" [timeOnly]="true" (onFocus)="setInitialTime()" [showIcon]="true" placeholder="如果只有單趟就不用填" [stepMinute]="15"></p-calendar>
     </div>
   </div>
 

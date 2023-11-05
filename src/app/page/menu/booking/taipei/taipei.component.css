@@ -49,13 +49,8 @@ h1{
 
 
 :host ::ng-deep .timepicker .p-calendar {
-  height: 35px;
-  width: 100%;
-}
-
-
-:host ::ng-deep .timepicker .p-calendar {
   height: 35px !important;
   width: 100%;
+  text-align: center;
 }
 

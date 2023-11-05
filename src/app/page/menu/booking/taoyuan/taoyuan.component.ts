@@ -81,6 +81,7 @@ export class TaoyuanComponent implements OnInit {
          error => {
            //console.error('請求錯誤：', error);
            this.buttonText = '提交';
+           this.isSubmitting = false;
          }
        );
    } else {
@@ -88,6 +89,7 @@ export class TaoyuanComponent implements OnInit {
      this.showFailAlert(message);
      const duidValue = this.form.get('DUID').value;
      this.buttonText = '提交';
+     this.isSubmitting = false;
     //console.log('DUID:', duidValue);
    }
  }

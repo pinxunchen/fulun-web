@@ -4,18 +4,16 @@
   margin: 10px;
 }
 
-.form-control.ng-invalid.ng-touched{
-    border:1px solid red;
+.form-control.ng-invalid.ng-touched {
+  border: 1px solid red;
 }
 
-
-.form-control{
+.form-control {
   height: 35px;
   font-size: 0.9rem;
 }
 
-
-.form-group{
+.form-group {
   font-weight: bolder;
 }
 
@@ -24,32 +22,48 @@ label {
   font-size: 15px;
 }
 
-.container{
+.container {
   background-color: #ffebc6;
   padding-top: 20px;
   border-radius: 8px;
 }
 
-h1{
+h1 {
   font-weight: bolder;
   letter-spacing: 1px;
   font-size: 26px;
 }
 
-.options{
+.options {
   font-size: 0.9rem;
   margin-right: 5px;
 }
 
-
-.radio-group{
+.radio-group {
   display: flex;
   justify-content: space-between;
 }
-
 
 :host ::ng-deep .timepicker .p-calendar {
   height: 35px !important;
   width: 100%;
   text-align: center;
+}
+
+:host ::ng-deep .p-datepicker .p-datepicker-header {
+  padding: 0rem;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+:host ::ng-deep .p-button {
+  background: rgb(53, 53, 53);
+  border: 1px solid rgb(53, 53, 53);
+  border-radius: 4px;
 }

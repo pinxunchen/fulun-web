@@ -1,110 +1,265 @@
 <div class="container">
-  <h1> 新北長照預約 </h1>
+  <h1>新北長照預約</h1>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
-
-  <div class="form-group">
-    <input type="hidden" class="form-control" formControlName="Area" value="newTaipei">
-    <input type="hidden" class="form-control" formControlName="DUID" value="DUID">
-  </div>
-
-  <div class="form-group">
-    <label for="PassengerName">個案姓名： </label>
-    <input type="text" class="form-control" id="PassengerName" [(ngModel)]="passengerName"  formControlName="PassengerName">
-    <div class="text-danger" *ngIf="form.controls.PassengerName.errors && form.controls.PassengerName.touched && form.controls.PassengerName.invalid">
-      <div *ngIf="form.controls.PassengerName.errors.required">*個案姓名為必填欄位</div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group">
+      <input
+        type="hidden"
+        class="form-control"
+        formControlName="Area"
+        value="newTaipei"
+      />
+      <input
+        type="hidden"
+        class="form-control"
+        formControlName="DUID"
+        value="DUID"
+      />
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="PassengerId">個案身份證： </label>
-    <input type="text" class="form-control" id="PassengerId" [(ngModel)]="passengerId" formControlName="PassengerId">
-    <div class="text-danger" *ngIf="form.controls.PassengerId.errors && form.controls.PassengerId.touched && form.controls.PassengerId.invalid">
-      <div *ngIf="form.controls.PassengerId.errors.required">*身份證為必填欄位</div>
-      <div *ngIf="form.controls.PassengerId.errors.minlength">*請輸入正確身分證共十碼</div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="Date">預約日期( 可選多天 )： </label>
-    <div class="timepicker">
-    <p-calendar formControlName="Dates" selectionMode="multiple" [showIcon]="true" [locale]="ch" [readonlyInput]="true"></p-calendar>
-    <div class="text-danger" *ngIf="form.controls.Dates.errors && form.controls.Dates.touched && form.controls.Dates.invalid">
-      <div *ngIf="form.controls.Dates.errors.required">*預約日期為必填欄位</div>
-    </div>
-  </div>
-  </div>
-
-  <div class="form-group">
-    <label for="RTime">去程時間： </label>
-    <div class="timepicker">
-      <p-calendar formControlName="RTime" [timeOnly]="true" [showIcon]="true" placeholder="選擇去程時間" [stepHour]="1" [stepMinute]="15"></p-calendar>
-      <div class="text-danger" *ngIf="form.controls.RTime.errors && form.controls.RTime.touched && form.controls.RTime.invalid">
-        <div *ngIf="form.controls.RTime.errors.required">*去程時間為必填欄位</div>
+    <div class="form-group">
+      <label for="PassengerName">個案姓名： </label>
+      <input
+        type="text"
+        class="form-control"
+        id="PassengerName"
+        [(ngModel)]="passengerName"
+        formControlName="PassengerName"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          form.controls.PassengerName.errors &&
+          form.controls.PassengerName.touched &&
+          form.controls.PassengerName.invalid
+        "
+      >
+        <div *ngIf="form.controls.PassengerName.errors.required">
+          *個案姓名為必填欄位
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <div class="timepicker">
-      <label for="BTime">回程時間 ： </label>
-      <p-calendar formControlName="BTime" [timeOnly]="true" (onFocus)="setInitialTime()" [showIcon]="true" placeholder="如果只有單趟就不用填" [stepMinute]="15"></p-calendar>
-    </div>
-  </div>
-
-
-  <div class="form-group">
-    <label for="PUAddress">上車地址：  </label>
-    <input type="text" class="form-control" id="PUAddress" [(ngModel)]="puAddress"  formControlName="PUAddress">
-    <div class="text-danger" *ngIf="form.controls.PUAddress.errors && form.controls.PUAddress.touched && form.controls.PUAddress.invalid">
-      <div *ngIf="form.controls.PUAddress.errors.required">*上車地址為必填欄位</div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="DPAddress">下車地址：  </label>
-    <input type="text" class="form-control" id="DPAddress" [(ngModel)]="dpAddress" formControlName="DPAddress">
-    <div class="text-danger" *ngIf="form.controls.DPAddress.errors && form.controls.DPAddress.touched && form.controls.DPAddress.invalid">
-      <div *ngIf="form.controls.DPAddress.errors.required">*下車地址為必填欄位</div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="Telephone">聯絡方式： </label>
-    <input type="tel" class="form-control" id="Telephone" formControlName="Telephone" [(ngModel)]="telephone"  inputmode="numeric" placeholder="格式：0912345678">
-    <div class="text-danger" *ngIf="form.controls.Telephone.errors && form.controls.Telephone.touched && form.controls.Telephone.invalid">
-      <div *ngIf="form.controls.Telephone.errors.required">*聯絡方式為必填欄位</div>
-      <div *ngIf="form.controls.Telephone.errors.minlength">*請輸入正確行動電話共十碼</div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="Remark">備註事項： </label>
-    <input type="text" class="form-control" id="Remark" formControlName="Remark">
-  </div>
-
-  <div class="form-group">
-    <label for="Option">預約項目：  </label>
-    <div class="radio-group">
-      <div class="1">
-        <input type="radio" class="options " value="爬梯機+交通" formControlName="Option" >爬梯機+交通
-      </div>
-      <div class="2">
-        <input type="radio" class="options" value="僅交通"  formControlName="Option">僅交通
-      </div>
-      <div class="3">
-        <input type="radio" class="options" value="僅爬梯機"  formControlName="Option">僅爬梯機
+    <div class="form-group">
+      <label for="PassengerId">個案身份證： </label>
+      <input
+        type="text"
+        class="form-control"
+        id="PassengerId"
+        [(ngModel)]="passengerId"
+        formControlName="PassengerId"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          form.controls.PassengerId.errors &&
+          form.controls.PassengerId.touched &&
+          form.controls.PassengerId.invalid
+        "
+      >
+        <div *ngIf="form.controls.PassengerId.errors.required">
+          *身份證為必填欄位
+        </div>
+        <div *ngIf="form.controls.PassengerId.errors.minlength">
+          *請輸入正確身分證共十碼
+        </div>
       </div>
     </div>
-  </div>
 
+    <div class="form-group">
+      <label for="Date">預約日期 〈可選多天〉： </label>
+      <div class="timepicker">
+        <p-calendar
+          formControlName="Dates"
+          selectionMode="multiple"
+          [showIcon]="true"
+          [locale]="ch"
+          [readonlyInput]="true"
+        >
+        </p-calendar>
 
-  <div class="btn">
-    <button type="submit" class="btn btn-dark" [disabled]="isSubmitting">
-      {{ buttonText }}
-    </button>
-  </div>
+        <div
+          class="text-danger"
+          *ngIf="
+            form.controls.Dates.errors &&
+            form.controls.Dates.touched &&
+            form.controls.Dates.invalid
+          "
+        >
+          <div *ngIf="form.controls.Dates.errors.required">
+            *預約日期為必填欄位
+          </div>
+        </div>
+      </div>
+    </div>
 
-</form>
+    <div class="form-group">
+      <label for="RTime">去程時間： </label>
+      <div class="timepicker">
+        <p-calendar
+          formControlName="RTime"
+          [timeOnly]="true"
+          [showIcon]="true"
+          placeholder="時間為24小時制"
+          [stepHour]="1"
+          [stepMinute]="15"
+          (onFocus)="setInitialTime2()"
+        >
+        </p-calendar>
+        <div
+          class="text-danger"
+          *ngIf="
+            form.controls.RTime.errors &&
+            form.controls.RTime.touched &&
+            form.controls.RTime.invalid
+          "
+        >
+          <div *ngIf="form.controls.RTime.errors.required">
+            *去程時間為必填欄位
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="form-group">
+      <div class="timepicker">
+        <label for="BTime">回程時間： </label>
+        <p-calendar
+          formControlName="BTime"
+          [timeOnly]="true"
+          (onFocus)="setInitialTime()"
+          [showIcon]="true"
+          placeholder="如果只有單趟就不用填"
+          [stepMinute]="15"
+        ></p-calendar>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="PUAddress">上車地址： </label>
+      <input
+        type="text"
+        class="form-control"
+        id="PUAddress"
+        [(ngModel)]="puAddress"
+        formControlName="PUAddress"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          form.controls.PUAddress.errors &&
+          form.controls.PUAddress.touched &&
+          form.controls.PUAddress.invalid
+        "
+      >
+        <div *ngIf="form.controls.PUAddress.errors.required">
+          *上車地址為必填欄位
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="DPAddress">下車地址： </label>
+      <input
+        type="text"
+        class="form-control"
+        id="DPAddress"
+        [(ngModel)]="dpAddress"
+        formControlName="DPAddress"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          form.controls.DPAddress.errors &&
+          form.controls.DPAddress.touched &&
+          form.controls.DPAddress.invalid
+        "
+      >
+        <div *ngIf="form.controls.DPAddress.errors.required">
+          *下車地址為必填欄位
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="Telephone">聯絡方式： </label>
+      <input
+        type="tel"
+        class="form-control"
+        id="Telephone"
+        formControlName="Telephone"
+        [(ngModel)]="telephone"
+        inputmode="numeric"
+        placeholder="格式：0912345678"
+      />
+      <div
+        class="text-danger"
+        *ngIf="
+          form.controls.Telephone.errors &&
+          form.controls.Telephone.touched &&
+          form.controls.Telephone.invalid
+        "
+      >
+        <div *ngIf="form.controls.Telephone.errors.required">
+          *聯絡方式為必填欄位
+        </div>
+        <div *ngIf="form.controls.Telephone.errors.minlength">
+          *請輸入正確行動電話共十碼
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="Remark">備註事項： </label>
+      <input
+        type="text"
+        class="form-control"
+        id="Remark"
+        formControlName="Remark"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="Option">預約項目： </label>
+      <div class="radio-group">
+        <div class="1">
+          <input
+            type="radio"
+            class="options"
+            value="爬梯機+交通"
+            formControlName="Option"
+          />爬梯機+交通
+        </div>
+        <div class="2">
+          <input
+            type="radio"
+            class="options"
+            value="僅交通"
+            formControlName="Option"
+          />僅交通
+        </div>
+        <div class="3">
+          <input
+            type="radio"
+            class="options"
+            value="僅爬梯機"
+            formControlName="Option"
+          />僅爬梯機
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center" *ngIf="isLoading">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden"></span>
+      </div>
+      <p>提交中..</p>
+    </div>
+
+    <div class="btn">
+      <button type="submit" class="btn btn-dark" [disabled]="isSubmitting">
+        {{ buttonText }}
+      </button>
+    </div>
+  </form>
 </div>
